@@ -1,65 +1,92 @@
-import Image from "next/image";
+import Link from "next/link";
+import SectionHeading from "@/components/SectionHeading";
+import ServiceFlowChart from "@/components/ServiceFlowChart";
+import { motto, slogan } from "@/lib/content";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      {/* ── Hero ───────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-mist via-white to-white">
+        {/* 背景裝飾：抽象天際線線條 */}
+        <svg
+          aria-hidden
+          viewBox="0 0 1200 320"
+          className="pointer-events-none absolute bottom-0 left-1/2 w-[1400px] -translate-x-1/2 text-navy/[0.06]"
+          fill="currentColor"
+        >
+          <path d="M0 320V240h60v-60h50v60h40V140h70v180h50V200h60v-40h50v160h70V120h30l20-40 20 40h30v200h60V180h80v140h50V90h90v230h60V210h70v110h50v-70h60v70h80V320H0Z" />
+        </svg>
+
+        <div className="relative mx-auto max-w-6xl px-4 pb-28 pt-24 text-center sm:px-6 sm:pt-32">
+          <p className="text-sm font-medium tracking-[0.35em] text-blue">
+            香港金融行業職業規劃・求職領導品牌
           </p>
+          <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-bold leading-tight text-navy sm:text-5xl">
+            {slogan}
+          </h1>
+
+          {/* 品牌格言：Talent → Elite → Professional 逐字浮現 */}
+          <div className="mt-10 flex flex-wrap items-baseline justify-center gap-x-5 gap-y-2 font-display text-3xl font-semibold tracking-[0.08em] text-ink-soft sm:text-4xl">
+            {motto.map((word) => (
+              <span key={word} className="motto-word">
+                <span className="text-blue">{word.charAt(0)}</span>
+                {word.slice(1)}
+              </span>
+            ))}
+          </div>
+          <p className="mt-4 text-sm tracking-[0.25em] text-ink-soft">
+            人才 → 菁英 → 專業人士
+          </p>
+
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/services"
+              className="rounded-md bg-navy px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-blue"
+            >
+              瞭解服務計畫
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-md border border-navy/25 px-8 py-3 text-sm font-medium text-navy transition-colors hover:border-navy hover:bg-mist"
+            >
+              預約諮詢
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ── TEP 服務體系 ───────────────────────────────── */}
+      <section className="bg-mist py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <SectionHeading
+            eyebrow="Our Service System"
+            title="TEP 服務體系"
+            sub="五級服務計畫，由啟航到至尊，層層疊加、步步進階。"
+          />
+          <div className="mt-16">
+            <ServiceFlowChart />
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ── CTA ────────────────────────────────────────── */}
+      <section className="bg-navy-deep py-20 text-center">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="font-display text-3xl font-semibold tracking-[0.1em] text-white">
+            {motto.join(" ")}
+          </h2>
+          <p className="mt-4 text-white/70">
+            將方向轉化為路徑，將努力轉化為成果。
+          </p>
+          <Link
+            href="/services"
+            className="mt-8 inline-block rounded-md bg-white px-8 py-3 text-sm font-medium text-navy transition-colors hover:bg-blue-soft hover:text-white"
+          >
+            深入了解五大計畫
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }

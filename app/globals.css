@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0b3b6f;
+  --navy-deep: #072a52;
+  --blue: #1e6bb8;
+  --blue-soft: #5a9bd8;
+  --mist: #f5f8fc;
+  --ink: #1c2733;
+  --ink-soft: #52606f;
+  --line: #dde6f0;
+  --bronze: #8c6a4a;
+  --silver: #8e9aab;
+  --gold: #b8912f;
+  --platinum: #7c8b99;
+  --diamond: #3b82c4;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-mist: var(--mist);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-bronze: var(--bronze);
+  --color-silver: var(--silver);
+  --color-gold: var(--gold);
+  --color-platinum: var(--platinum);
+  --color-diamond: var(--diamond);
+  --font-sans: var(--font-noto-tc), "PingFang TC", "Microsoft JhengHei",
+    sans-serif;
+  --font-display: var(--font-display-face);
+}
+
+body {
+  background: #ffffff;
+  color: var(--ink);
+  font-family: var(--font-noto-tc), "PingFang TC", "Microsoft JhengHei",
+    sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+/* Staged fade-in for the hero motto */
+@keyframes motto-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.motto-word {
+  opacity: 0;
+  animation: motto-rise 0.7s ease-out forwards;
+}
+
+.motto-word:nth-child(1) {
+  animation-delay: 0.15s;
+}
+.motto-word:nth-child(2) {
+  animation-delay: 0.45s;
+}
+.motto-word:nth-child(3) {
+  animation-delay: 0.75s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motto-word {
+    animation: none;
+    opacity: 1;
+  }
+}

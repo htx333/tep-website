@@ -391,6 +391,39 @@ export const faq = [
   },
 ];
 
+// ---------- 預約諮詢（聯繫我們三大入口） ----------
+
+export type BookingType = {
+  id: string;
+  title: string;
+  subtitle: string;
+  desc: string;
+};
+
+export const bookingTypes: BookingType[] = [
+  {
+    id: "consult",
+    title: "服務諮詢",
+    subtitle: "For Students",
+    desc: "對服務計畫有興趣？預約 1 對 1 諮詢，由團隊為你解答疑問、評估背景與賽道定位。",
+  },
+  {
+    id: "join",
+    title: "加入TEP團隊",
+    subtitle: "For Professionals",
+    desc: "行內專業人士有志加入我們的導師團隊？預約面談，了解你與 TEP 帶教體系的契合度。",
+  },
+  {
+    id: "partner",
+    title: "商業合作",
+    subtitle: "For Institutions",
+    desc: "歡迎人才招聘機構、升學機構、銀行、券商及四大等機構洽談合作，共建人才通道。",
+  },
+];
+
+// 可預約時段（示意，之後按實際情況調整）
+export const bookingSlots = ["10:00", "11:30", "14:00", "15:30", "17:00"];
+
 // ---------- 聯繫我們 ----------
 
 export const contact = {

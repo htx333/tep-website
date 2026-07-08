@@ -22,7 +22,7 @@ export default function HomePage() {
           <p className="text-sm font-medium tracking-[0.35em] text-blue">
             香港金融行業職業規劃・求職領導品牌
           </p>
-          <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-bold leading-tight text-navy sm:text-5xl">
+          <h1 className="mx-auto mt-6 whitespace-nowrap text-[clamp(1.05rem,4.4vw,3rem)] font-bold leading-tight text-navy">
             {slogan}
           </h1>
 

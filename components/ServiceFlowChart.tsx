@@ -73,24 +73,9 @@ export default function ServiceFlowChart() {
       <div className="grid grid-cols-1 gap-y-12 rounded-2xl border border-line bg-white p-6 shadow-sm sm:grid-cols-2 lg:grid-cols-5 lg:gap-y-0 lg:divide-x lg:divide-line lg:p-10">
         {tiers.map((tier) => (
           <div key={tier.id} className="flex flex-col items-center px-4">
-            {/* 箭頭標籤 */}
-            <div className="flex h-9 w-20 items-center justify-center rounded-md bg-blue-soft/80 text-white">
-              <svg
-                viewBox="0 0 24 24"
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m9 5 7 7-7 7" />
-              </svg>
-            </div>
-
             {/* 圖示圓 */}
             <div
-              className="mt-8 flex h-24 w-24 items-center justify-center rounded-full bg-mist"
+              className="flex h-24 w-24 items-center justify-center rounded-full bg-mist"
               style={{ color: `var(--${tier.metalColor})` }}
             >
               <TierIcon tierId={tier.id} />

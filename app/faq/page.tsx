@@ -24,17 +24,26 @@ export default function FaqPage() {
       <section className="bg-white pb-28">
         <div className="mx-auto max-w-3xl space-y-14 px-4 sm:px-6">
           {faq.map((item, i) => (
-            <article key={item.q} className="flex gap-6 border-b border-line pb-12 last:border-b-0">
-              <div className="font-display text-4xl font-semibold text-blue-soft/70">
+            <article
+              key={item.q}
+              tabIndex={0}
+              className="group flex cursor-pointer gap-6 border-b border-line pb-10 outline-none last:border-b-0"
+            >
+              <div className="font-display text-4xl font-semibold text-blue-soft/70 transition-colors duration-300 group-hover:text-blue group-focus-within:text-blue">
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <div>
-                <h2 className="text-lg font-bold leading-relaxed text-navy">
+              <div className="flex-1">
+                <h2 className="text-lg font-bold leading-relaxed text-navy transition-colors duration-300 group-hover:text-blue group-focus-within:text-blue">
                   「{item.q}」
                 </h2>
-                <p className="mt-4 whitespace-pre-line text-base leading-loose text-ink-soft">
-                  {item.a}
-                </p>
+                {/* 答案：游標移至問題時展開 */}
+                <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                  <div className="overflow-hidden">
+                    <p className="mt-4 whitespace-pre-line text-base leading-loose text-ink-soft opacity-0 transition-opacity delay-100 duration-500 group-hover:opacity-100 group-focus-within:opacity-100">
+                      {item.a}
+                    </p>
+                  </div>
+                </div>
               </div>
             </article>
           ))}

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { flowRibbons, tiers } from "@/lib/content";
 
 // 每個層級的簡約線條圖示（呼應 DBC 概念圖的圓形圖標）
@@ -52,6 +55,7 @@ function TierIcon({ tierId }: { tierId: string }) {
 }
 
 export default function ServiceFlowChart() {
+  const [hovered, setHovered] = useState<string | null>(null);
   return (
     <div>
       {/* 頂部虛線與兩個標籤（呼應 DBC 概念圖） */}
@@ -71,12 +75,31 @@ export default function ServiceFlowChart() {
 
       {/* 五欄服務流程 */}
       <div className="grid grid-cols-1 gap-y-12 rounded-2xl border border-line bg-white p-6 shadow-sm sm:grid-cols-2 lg:grid-cols-5 lg:gap-y-0 lg:divide-x lg:divide-line lg:p-10">
-        {tiers.map((tier) => (
-          <div key={tier.id} className="flex flex-col items-center px-4">
-            {/* 圖示圓 */}
+        {tiers.map((tier) => {
+          const isHover = hovered === tier.id;
+          return (
+          <div
+            key={tier.id}
+            onMouseEnter={() => setHovered(tier.id)}
+            onMouseLeave={() =>
+              setHovered((h) => (h === tier.id ? null : h))
+            }
+            className="flex flex-col items-center rounded-xl px-4 py-5 transition-[transform,box-shadow] duration-300 ease-out lg:hover:-translate-y-3 lg:hover:shadow-[0_12px_40px_rgba(10,31,61,0.1)]"
+          >
+            {/* 圖示圓 — 懸停時以層級金屬色填滿 */}
             <div
-              className="flex h-24 w-24 items-center justify-center rounded-full bg-mist"
-              style={{ color: `var(--${tier.metalColor})` }}
+              className="flex h-24 w-24 items-center justify-center rounded-full transition-[transform,background-color,color] duration-300 ease-out lg:hover:scale-110"
+              style={
+                isHover
+                  ? {
+                      background: `var(--${tier.metalColor})`,
+                      color: "#ffffff",
+                    }
+                  : {
+                      background: "var(--mist)",
+                      color: `var(--${tier.metalColor})`,
+                    }
+              }
             >
               <TierIcon tierId={tier.id} />
             </div>
@@ -121,7 +144,8 @@ export default function ServiceFlowChart() {
               ))}
             </ul>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

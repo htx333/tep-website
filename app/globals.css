@@ -1,19 +1,30 @@
 @import "tailwindcss";
 
+/* ============================================================
+   TEP Design System tokens — the brand-owner's preferred palette.
+   Restrained navy-on-white with a single warm gold accent.
+   Values mirror the TEP Design System (claude.ai/design).
+   ============================================================ */
 :root {
-  --navy: #0b3b6f;
-  --navy-deep: #072a52;
-  --blue: #1e6bb8;
-  --blue-soft: #5a9bd8;
-  --mist: #f5f8fc;
+  --navy-deep: #0a1f3d;
+  --navy: #14406b;
+  --blue: #3e77a6;
+  --blue-soft: #7fa6c7;
+  --blue-tint: #e7eef5;
+  --mist: #f2f5f8;
+  --mist-deep: #dde7f2;
+  --gold: #c9a659;
   --ink: #1c2733;
   --ink-soft: #52606f;
+  --ink-faint: #8794a3;
   --line: #dde6f0;
-  --bronze: #8c6a4a;
-  --silver: #8e9aab;
-  --gold: #b8912f;
-  --platinum: #7c8b99;
-  --diamond: #3b82c4;
+  --line-strong: #c3d1e0;
+  /* Five-step metal scale for the service tiers */
+  --bronze: #b08355;
+  --silver: #97a2b0;
+  --gold-metal: #c9a659;
+  --platinum: #6c7a8a;
+  --diamond: #4e93c4;
 }
 
 @theme inline {
@@ -21,10 +32,14 @@
   --color-navy-deep: var(--navy-deep);
   --color-blue: var(--blue);
   --color-blue-soft: var(--blue-soft);
+  --color-blue-tint: var(--blue-tint);
   --color-mist: var(--mist);
+  --color-mist-deep: var(--mist-deep);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-bronze: var(--bronze);
   --color-silver: var(--silver);
   --color-gold: var(--gold);

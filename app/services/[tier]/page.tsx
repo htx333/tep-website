@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PlanSection from "@/components/PlanSection";
+import PlanNextStep from "@/components/PlanNextStep";
 import { planDetails, tiers } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -31,9 +32,6 @@ export default async function TierDetailPage({
   const detail = planDetails.find((d) => d.tierId === tierId);
   if (!tier || !detail) notFound();
 
-  const prev = tiers[index - 1];
-  const next = tiers[index + 1];
-
   return (
     <>
       {/* 麵包屑 */}
@@ -51,37 +49,8 @@ export default async function TierDetailPage({
 
       <PlanSection detail={detail} tier={tier} index={0} />
 
-      {/* 上一級／下一級導覽 */}
-      <section className="border-t border-line bg-mist py-12">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 sm:px-6">
-          {prev ? (
-            <Link
-              href={`/services/${prev.id}`}
-              className="text-sm text-ink-soft transition-colors hover:text-navy"
-            >
-              ← {prev.metal}・{prev.planEn} {prev.planName}
-            </Link>
-          ) : (
-            <span />
-          )}
-          <Link
-            href="/contact"
-            className="rounded-md bg-navy px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue"
-          >
-            預約諮詢此計畫
-          </Link>
-          {next ? (
-            <Link
-              href={`/services/${next.id}`}
-              className="text-sm text-ink-soft transition-colors hover:text-navy"
-            >
-              {next.metal}・{next.planEn} {next.planName} →
-            </Link>
-          ) : (
-            <span />
-          )}
-        </div>
-      </section>
+      {/* 計畫成果 + 下一步 */}
+      <PlanNextStep tierId={tierId} />
     </>
   );
 }

@@ -1,48 +1,26 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import SectionHeading from "@/components/SectionHeading";
 import TeamCard from "@/components/TeamCard";
 import PartnerLogos from "@/components/PartnerLogos";
 import { background, founder, mentors } from "@/lib/content";
 
-const tabs = [
-  { id: "background", label: "TEP背景" },
-  { id: "founder", label: "創始人" },
-  { id: "mentors", label: "導師團隊" },
-  { id: "targets", label: "目標公司" },
-] as const;
+const SECTION_IDS = ["background", "founder", "mentors", "targets"] as const;
 
-type TabId = (typeof tabs)[number]["id"];
+type TabId = (typeof SECTION_IDS)[number];
 
 export default function AboutTabs() {
-  const [active, setActive] = useState<TabId>("background");
+  // 顯示哪一分區由 ?section= 查詢參數決定；切換由導覽列「關於我們」下拉選單觸發。
+  // App Router 會即時反映查詢參數變化，故同頁切換也能重新渲染。
+  const param = useSearchParams().get("section") ?? "";
+  const active: TabId = (SECTION_IDS as readonly string[]).includes(param)
+    ? (param as TabId)
+    : "background";
 
   return (
     <div>
-      {/* 頁內切換列（緊貼導覽列下方） */}
-      <div className="sticky top-16 z-40 border-b border-line bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl justify-center gap-1 overflow-x-auto px-4 sm:gap-3 sm:px-6">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActive(tab.id)}
-              className={`relative shrink-0 px-4 py-4 text-sm transition-colors sm:px-6 ${
-                active === tab.id
-                  ? "font-semibold text-navy"
-                  : "text-ink-soft hover:text-navy"
-              }`}
-            >
-              {tab.label}
-              {active === tab.id && (
-                <span className="absolute inset-x-4 bottom-0 h-0.5 rounded bg-blue sm:inset-x-6" />
-              )}
-            </button>
-          ))}
-        </div>
-      </div>
-
       {/* ── TEP 背景 ─────────────────────────────────── */}
       {active === "background" && (
         <section className="bg-gradient-to-b from-mist to-white py-20">

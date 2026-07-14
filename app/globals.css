@@ -25,6 +25,23 @@
   --gold-metal: #c9a659;
   --platinum: #6c7a8a;
   --diamond: #4e93c4;
+
+  /* --tep-* aliases + card shadow + font vars, so components imported
+     from the TEP Design System (e.g. the 主頁 cinematic hero) resolve
+     against the same tokens the design was authored against. */
+  --tep-navy-deep: var(--navy-deep);
+  --tep-navy: var(--navy);
+  --tep-blue: var(--blue);
+  --tep-blue-soft: var(--blue-soft);
+  --tep-gold: var(--gold);
+  --tep-mist: var(--mist);
+  --tep-ink: var(--ink);
+  --tep-ink-soft: var(--ink-soft);
+  --tep-line: var(--line);
+  --shadow-card: 0 4px 20px rgba(10, 31, 61, 0.06);
+  --font-body: var(--font-noto-tc), "PingFang TC", "Microsoft JhengHei",
+    sans-serif;
+  --font-display: var(--font-display-face), Georgia, serif;
 }
 
 @theme inline {
@@ -90,6 +107,63 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .motto-word {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ── 主頁 cinematic home (imported TEP Home design) ─────────── */
+/* staged motto rise using the design's easing */
+@keyframes tep-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tep-word {
+  display: inline-block;
+  opacity: 0;
+  animation: tep-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.tep-word:nth-child(1) {
+  animation-delay: 0.15s;
+}
+.tep-word:nth-child(2) {
+  animation-delay: 0.45s;
+}
+.tep-word:nth-child(3) {
+  animation-delay: 0.75s;
+}
+/* hide the horizontal service strip's scrollbar */
+.tep-strip {
+  scrollbar-width: none;
+}
+.tep-strip::-webkit-scrollbar {
+  display: none;
+}
+/* "瞭解更多" link — gold, brightens to white on hover */
+.tep-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--tep-gold);
+  text-decoration: none;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+.tep-more:hover {
+  color: #fff;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tep-word {
     animation: none;
     opacity: 1;
   }

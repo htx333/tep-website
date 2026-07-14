@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import AboutTabs from "@/components/AboutTabs";
 
 export const metadata: Metadata = {
@@ -6,5 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return <AboutTabs />;
+  return (
+    <Suspense>
+      <AboutTabs />
+    </Suspense>
+  );
 }

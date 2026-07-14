@@ -38,6 +38,12 @@
   --tep-ink: var(--ink);
   --tep-ink-soft: var(--ink-soft);
   --tep-line: var(--line);
+  --tep-white: #ffffff;
+  --tep-line-strong: var(--line-strong);
+  --tep-bronze: var(--bronze);
+  --tep-silver: var(--silver);
+  --tep-gold-metal: var(--gold-metal);
+  --tep-platinum: var(--platinum);
   --shadow-card: 0 4px 20px rgba(10, 31, 61, 0.06);
   --font-body: var(--font-noto-tc), "PingFang TC", "Microsoft JhengHei",
     sans-serif;
@@ -167,4 +173,22 @@ body {
     animation: none;
     opacity: 1;
   }
+}
+
+/* ── 輔導遞升系統 flowchart entrance animations ─────────────── */
+@keyframes tepRise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes tepPop {
+  0% { opacity: 0; transform: scale(0); }
+  70% { transform: scale(1.25); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes tepDraw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-tep-anim] { animation: none !important; }
 }

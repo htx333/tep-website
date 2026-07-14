@@ -13,6 +13,12 @@ const aboutSections = [
   { id: "targets", label: "目標公司" },
 ];
 
+// FAQ 旁的下拉選單 — 輔導遞升系統 與 FAQ
+const faqItems = [
+  { href: "/system", label: "輔導遞升系統" },
+  { href: "/faq", label: "FAQ" },
+];
+
 function ChevronDown({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -77,6 +83,42 @@ export default function Navbar() {
                           key={s.id}
                           href={`/about?section=${s.id}`}
                           className="block px-5 py-2.5 text-sm text-ink-soft transition-colors hover:bg-mist hover:text-navy"
+                        >
+                          {s.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            // FAQ — 懸停顯示 輔導遞升系統 與 FAQ 的下拉選單
+            if (link.href === "/faq") {
+              const grpActive = pathname === "/faq" || pathname === "/system";
+              return (
+                <div key={link.href} className="group relative">
+                  <Link
+                    href="/faq"
+                    className={`flex items-center gap-1 rounded-md px-4 py-2 text-sm transition-colors ${
+                      grpActive ? "font-medium text-navy" : "text-ink-soft group-hover:text-navy"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown className="transition-transform duration-200 group-hover:rotate-180" />
+                    {grpActive && (
+                      <span className="absolute inset-x-4 bottom-0 h-0.5 rounded bg-blue" />
+                    )}
+                  </Link>
+                  <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="min-w-[176px] overflow-hidden rounded-xl border border-line bg-white py-2 shadow-[0_12px_40px_rgba(10,31,61,0.1)]">
+                      {faqItems.map((s) => (
+                        <Link
+                          key={s.href}
+                          href={s.href}
+                          className={`block px-5 py-2.5 text-sm transition-colors hover:bg-mist hover:text-navy ${
+                            pathname === s.href ? "font-medium text-navy" : "text-ink-soft"
+                          }`}
                         >
                           {s.label}
                         </Link>
@@ -152,6 +194,24 @@ export default function Navbar() {
                       href={`/about?section=${s.id}`}
                       onClick={() => setOpen(false)}
                       className="block py-2 pl-6 pr-2 text-sm text-ink-soft hover:text-navy"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : link.href === "/faq" ? (
+              <div key={link.href} className="border-b border-line">
+                <div className="px-2 py-3 text-sm font-medium text-navy">{link.label}</div>
+                <div className="pb-2">
+                  {faqItems.map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => setOpen(false)}
+                      className={`block py-2 pl-6 pr-2 text-sm hover:text-navy ${
+                        pathname === s.href ? "font-medium text-navy" : "text-ink-soft"
+                      }`}
                     >
                       {s.label}
                     </Link>

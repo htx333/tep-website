@@ -355,19 +355,23 @@ export const mentors = [
 ];
 
 // 合作夥伴（示意展示，之後以正式名單替換）
-export const partners = [
-  "Goldman Sachs",
-  "BlackRock",
-  "J.P. Morgan",
-  "UBS",
-  "Citi",
-  "Morgan Stanley",
-  "HSBC 滙豐",
-  "中金公司 CICC",
-  "Barclays",
-  "中國銀行",
-  "大華銀行 UOB",
-  "Daiwa",
+// 目標公司 — logo 牆。放入正式 logo 圖檔（例如 public/logos/goldman-sachs.svg）
+// 後，於對應項目補上 `logo` 路徑即可自動改以圖片顯示；未提供 logo 前以名稱示意。
+export type Partner = { name: string; logo?: string };
+
+export const partners: Partner[] = [
+  { name: "Goldman Sachs" },
+  { name: "BlackRock" },
+  { name: "J.P. Morgan" },
+  { name: "UBS" },
+  { name: "Citi" },
+  { name: "Morgan Stanley" },
+  { name: "HSBC 滙豐" },
+  { name: "中金公司 CICC" },
+  { name: "Barclays" },
+  { name: "中國銀行" },
+  { name: "大華銀行 UOB" },
+  { name: "Daiwa" },
 ];
 
 // ---------- FAQ ----------

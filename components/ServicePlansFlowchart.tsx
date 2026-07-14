@@ -1,6 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+
+// The diagram is authored at a fixed 1980px width; we scale it down to fit
+// whatever width the page gives us, so the whole flowchart is visible without
+// horizontal scrolling.
+const DESIGN_WIDTH = 1980;
 
 /**
  * ServicePlansFlowchart — 輔導遞升系統.
@@ -152,35 +157,68 @@ const anim = (delay: number) => ({
 export default function ServicePlansFlowchart() {
   const [openPrev, setOpenPrev] = useState(0);
 
-  return (
-    <div style={{ width: "100%", overflowX: "auto", padding: "8px 0 24px" }}>
-      <div
-        style={{
-          margin: "0 auto",
-          position: "relative",
-          overflow: "hidden",
-          width: 1980,
-          background:
-            "linear-gradient(180deg, rgba(221,231,242,0.65) 0%, rgba(231,238,245,0.45) 45%, rgba(255,255,255,0.55) 100%)",
-          border: "1px solid var(--tep-line)",
-          padding: "64px 52px 72px",
-        }}
-      >
-        {/* watermark */}
-        <div style={{ position: "absolute", top: 300, left: 0, right: 0, display: "flex", justifyContent: "center", pointerEvents: "none", userSelect: "none" }}>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: 560, fontWeight: 700, letterSpacing: "0.35em", color: "var(--tep-navy)", opacity: 0.045, textIndent: "0.35em", lineHeight: 1 }}>
-            TEP
-          </span>
-        </div>
+  // Fit the fixed-width diagram to the available page width.
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(0.6);
+  const [box, setBox] = useState<{ h: number; left: number }>({ h: 0, left: 0 });
 
-        {/* header */}
-        <div data-tep-anim style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, marginBottom: 36, ...anim(0) }}>
-          <div style={{ fontSize: 13, letterSpacing: "0.3em", color: "var(--tep-blue)", fontWeight: 600 }}>OUR SERVICE SYSTEM</div>
-          <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 700, color: "var(--tep-navy)" }}>輔導服務・遞升路徑</h2>
-          <p style={{ margin: 0, fontSize: 15, color: "var(--tep-ink-soft)", letterSpacing: "0.05em" }}>
-            將方向轉化為路徑，將努力轉化為成果 — 五級計畫，逐站抵達
-          </p>
+  useLayoutEffect(() => {
+    const outer = outerRef.current;
+    const inner = innerRef.current;
+    if (!outer || !inner) return;
+    const recompute = () => {
+      const ow = outer.clientWidth;
+      const s = Math.min(1, ow / DESIGN_WIDTH);
+      setScale(s);
+      setBox({ h: inner.offsetHeight * s, left: Math.max(0, (ow - DESIGN_WIDTH * s) / 2) });
+    };
+    recompute();
+    const roOuter = new ResizeObserver(recompute);
+    const roInner = new ResizeObserver(recompute);
+    roOuter.observe(outer);
+    roInner.observe(inner);
+    return () => {
+      roOuter.disconnect();
+      roInner.disconnect();
+    };
+  }, []);
+
+  return (
+    <div>
+      {/* Page headline — kept at page scale (matches other pages), never shrunk */}
+      <div style={{ textAlign: "center", marginBottom: 44 }}>
+        <div style={{ fontFamily: "var(--font-display)", fontSize: 13, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.3em", color: "var(--tep-blue)" }}>
+          Our Service System
         </div>
+        <h1 style={{ margin: "12px 0 0", fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 700, color: "var(--tep-navy)" }}>
+          輔導服務・遞升路徑
+        </h1>
+        <div style={{ width: 48, height: 1, background: "var(--tep-gold)", margin: "20px auto 0" }} />
+        <p style={{ margin: "20px 0 0", fontSize: 16, lineHeight: 1.75, color: "var(--tep-ink-soft)" }}>
+          將方向轉化為路徑，將努力轉化為成果 — 五級計畫，逐站抵達
+        </p>
+      </div>
+
+      {/* Fixed-width diagram, scaled to fit the page width (no horizontal scroll) */}
+      <div ref={outerRef} style={{ position: "relative", width: "100%", overflow: "hidden", height: box.h }}>
+        <div
+          ref={innerRef}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: box.left,
+            width: DESIGN_WIDTH,
+            transformOrigin: "top left",
+            transform: `scale(${scale})`,
+          }}
+        >
+          {/* watermark */}
+          <div style={{ position: "absolute", top: 240, left: 0, right: 0, display: "flex", justifyContent: "center", pointerEvents: "none", userSelect: "none" }}>
+            <span style={{ fontFamily: "var(--font-display)", fontSize: 560, fontWeight: 700, letterSpacing: "0.35em", color: "var(--tep-navy)", opacity: 0.045, textIndent: "0.35em", lineHeight: 1 }}>
+              TEP
+            </span>
+          </div>
 
         {/* titles row */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(5,340px)", gap: 44, justifyContent: "center", alignItems: "end" }}>
@@ -300,6 +338,7 @@ export default function ServicePlansFlowchart() {
           <span style={{ fontFamily: "var(--font-display)", fontSize: 15, letterSpacing: "0.25em", color: "var(--tep-blue)" }}>ELITE</span>
           <span style={{ width: 64, borderTop: "1px dashed var(--tep-blue-soft)" }} />
           <span style={{ fontFamily: "var(--font-display)", fontSize: 15, letterSpacing: "0.25em", color: "var(--tep-gold)" }}>PROFESSIONAL</span>
+        </div>
         </div>
       </div>
     </div>

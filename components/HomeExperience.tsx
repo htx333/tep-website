@@ -25,6 +25,7 @@ const SERVICE_CARDS = [
     cn: "啟航",
     href: "/services#foundation",
     tagline: "「打穩求職基石，從職涯定位到面試實戰的一站式求職起跑點。」",
+    img: "/service/service-foundation.jpg",
     placeholder: "Foundation 計畫圖片",
     apex: false,
   },
@@ -34,6 +35,7 @@ const SERVICE_CARDS = [
     cn: "尊享",
     href: "/services#premier",
     tagline: "「鎖定優質名企，以智能內推與終面優先權精準敲開職場大門。」",
+    img: "/service/service-premier.jpg",
     placeholder: "Premier 計畫圖片",
     apex: false,
   },
@@ -43,6 +45,7 @@ const SERVICE_CARDS = [
     cn: "私享",
     href: "/services#private",
     tagline: "「導師強勢內推，以實習實戰保障助你踏出關鍵的第一步。」",
+    img: "/service/service-private.jpg",
     placeholder: "Private 計畫圖片",
     apex: false,
   },
@@ -52,6 +55,7 @@ const SERVICE_CARDS = [
     cn: "卓越",
     href: "/services#sovereign",
     tagline: "「解鎖專業資格認證，突破職涯瓶頸，奠定不可替代的競爭力。」",
+    img: "/service/service-sovereign.jpg",
     placeholder: "Sovereign 計畫圖片",
     apex: false,
   },
@@ -61,6 +65,7 @@ const SERVICE_CARDS = [
     cn: "至尊",
     href: "/services#apex",
     tagline: "「20年+頂尖資深銀行家親授，站在巨人肩上掌握頂級職涯藍圖。」",
+    img: "/service/service-apex.jpg",
     placeholder: "Apex 計畫圖片",
     apex: true,
   },
@@ -585,7 +590,7 @@ export default function HomeExperience() {
                       boxShadow: "var(--shadow-card)",
                     }}
                   >
-                    <Slot label={c.placeholder} />
+                    <Slot src={c.img} label={c.placeholder} />
                     <div
                       style={{
                         position: "absolute",

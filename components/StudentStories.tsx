@@ -83,8 +83,7 @@ export default function StudentStories() {
       >
         <div
           style={{
-            height: "50vh",
-            flex: "none",
+            flex: 1,
             background: "#0A1F3D",
             position: "relative",
             display: "flex",
@@ -115,17 +114,6 @@ export default function StudentStories() {
           >
             <path d="M0 160V90h60V50h40v110M140 160V70h70v90M250 160V30h50V10h30v150M370 160V80h60v80M470 160V40h45v120M555 160V95h55v65M650 160V20h40v20h35v120M765 160V70h60v90M865 160V50h50v110M955 160V85h55v75M1050 160V35h45v125M1135 160V75h65v85" />
           </svg>
-        </div>
-        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-          <div style={{ textAlign: "center" }}>
-            <Heading eyebrow="STUDENT STORIES" title="學生分享" sub="來自 TEP 學員的真實蛻變歷程" />
-            <div style={{ marginTop: 36, display: "flex", flexDirection: "column", alignItems: "center", gap: 10, color: "#5B6B82" }}>
-              <span style={{ fontSize: 12, letterSpacing: "0.25em" }}>向下滾動</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 4v16M6 14l6 6 6-6" />
-              </svg>
-            </div>
-          </div>
         </div>
       </section>
         </div>

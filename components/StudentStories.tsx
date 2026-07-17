@@ -1,13 +1,11 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 
 /**
  * 學生分享 — imported from the "學生分享 v2" design (claude.ai/design).
- * A fixed video-film hero that scrolls up in lockstep with the 成功案例
- * panel that slides over it, a 3-column grid of student success stories,
- * and a navy CTA band. Video and later cases are placeholders.
+ * The film hero stays pinned (position: fixed) while the white 成功案例
+ * panel scrolls up and seamlessly covers it — matching the home page's
+ * "image 4 → 服務體系" cover transition. Then a 3-column grid of student
+ * success stories and a navy CTA band. Video and later cases are placeholders.
  */
 
 type Story = { title: string; excerpt: string; date: string };
@@ -66,40 +64,19 @@ function Heading({ eyebrow, title, sub }: { eyebrow: string; title: string; sub:
 }
 
 export default function StudentStories() {
-  const heroRef = useRef<HTMLElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
-    let raf = 0;
-    const loop = () => {
-      raf = requestAnimationFrame(loop);
-      const hero = heroRef.current;
-      const panel = panelRef.current;
-      if (!hero || !panel) return;
-      const vh = window.innerHeight;
-      const cover = clamp(vh - panel.getBoundingClientRect().top, 0, vh);
-      hero.style.transform = "translateY(" + -cover + "px)";
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
   return (
     <div style={{ background: "#ffffff" }}>
-      {/* spacer so the fixed hero shows first */}
+      {/* spacer so the pinned hero shows first */}
       <div style={{ height: "100vh" }} />
 
-      {/* Fixed film hero — scrolls up as the panel slides over it */}
+      {/* Pinned film hero — the panel below scrolls up and covers it */}
       <section
-        ref={heroRef}
         aria-label="學生分享 · 影片"
         style={{
           position: "fixed",
           inset: 0,
           zIndex: 0,
           overflow: "hidden",
-          willChange: "transform",
           background: "#ffffff",
           display: "flex",
           flexDirection: "column",
@@ -154,7 +131,7 @@ export default function StudentStories() {
       </section>
 
       {/* Panel that slides up over the hero */}
-      <div ref={panelRef} style={{ position: "relative", zIndex: 5 }}>
+      <div style={{ position: "relative", zIndex: 5 }}>
         <section
           aria-label="成功案例"
           style={{

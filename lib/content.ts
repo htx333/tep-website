@@ -337,6 +337,7 @@ export const mentors = [
   {
     name: "Szzy Wong",
     role: "首席培訓師",
+    photo: "/team/szzy-wong.jpg",
     bullets: [
       "20 餘年亞太金融行業資深資歷。",
       "風控諮詢：為跨國公司構建並執行商業、信貸與合規風控框架。",

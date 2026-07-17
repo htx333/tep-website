@@ -688,7 +688,7 @@ export default function HomeExperience() {
         </section>
 
         {/* 4 · 目標公司 logo wall */}
-        <section style={{ background: "var(--tep-mist)", padding: "96px 24px" }}>
+        <section style={{ background: "#ffffff", padding: "96px 24px" }}>
           <div style={{ maxWidth: 1152, margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: 13, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.3em", color: "var(--tep-blue)" }}>

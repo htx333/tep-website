@@ -6,7 +6,7 @@ import { partners } from "@/lib/content";
  */
 export default function PartnerLogos() {
   return (
-    <div className="rounded-2xl border border-line bg-white px-6 py-16 sm:px-10">
+    <div className="px-2 py-4 sm:px-6">
       <div className="mx-auto grid max-w-5xl grid-cols-2 items-center justify-items-center gap-x-10 gap-y-14 sm:grid-cols-3 lg:grid-cols-5">
         {partners.map((p) => (
           <div key={p.name} className="flex h-12 w-full items-center justify-center px-2">

@@ -12,37 +12,37 @@ type Story = { title: string; excerpt: string; date: string };
 
 const STORIES: Story[] = [
   {
-    title: "Success Story — 同學A — 從零基礎到 10 個面試",
+    title: "張同學 — 從零基礎到 5 個面試",
     excerpt:
-      "「過去的我，對金融的認知只停留在『商科畢業的出路』。是 TEP 帶我深入了解各個金融賽道，短短半年內，從零基礎的金融新手，轉變為斬獲 10 個實習面試機會的求職者。」",
+      "「過去的我，對金融的認知只停留在『商科畢業的出路』。是 TEP 帶我深入了解各個金融賽道，短短半年內，從零基礎的金融新手，轉變為斬獲 5 個實習面試機會的求職者。」",
     date: "2026-05-20",
   },
   {
-    title: "Success Story — 同學B — 專業資格全數掛牌",
+    title: "陳同學 — 專業資格全數掛牌",
     excerpt:
-      "「在導師的高效指導與精準佈局下，我在短時間內連續考取 HKSI、SFC、IIQE 及 IQE 等多項專業核心資格，並由 TEP 協助順利完成掛牌，最終斬獲心儀金融機構的 Offer。」",
+      "「在導師的高效指導與精準佈局下，我在短時間內考取 HKSI 專業資格，並由 TEP 協助順利完成掛牌，最終斬獲心儀金融機構的 Offer。」",
     date: "2026-03-14",
   },
   {
-    title: "Success Story — 同學C — 家族企業接班人",
+    title: "李同學 — 家族企業接班人",
     excerpt:
       "「進入 TEP 後，我逐漸建立起決策力與領導潛質；藉由平台加入家族聯盟，在全球視野下拓展關鍵商業人脈。如今，我已向父母證明自己是能承擔家族重任的接班人。」",
     date: "2025-12-08",
   },
   {
-    title: "Success Story —（案例標題預留）",
+    title: "（案例標題預留）",
     excerpt:
       "（案例摘要預留：一段約兩至三行的分享節錄，描述學員背景、TEP 的介入方式與最終成果。）",
     date: "2025-10-02",
   },
   {
-    title: "Success Story —（案例標題預留）",
+    title: "（案例標題預留）",
     excerpt:
       "（案例摘要預留：一段約兩至三行的分享節錄，描述學員背景、TEP 的介入方式與最終成果。）",
     date: "2025-07-18",
   },
   {
-    title: "Success Story —（案例標題預留）",
+    title: "（案例標題預留）",
     excerpt:
       "（案例摘要預留：一段約兩至三行的分享節錄，描述學員背景、TEP 的介入方式與最終成果。）",
     date: "2025-04-25",
@@ -129,7 +129,7 @@ export default function StudentStories() {
               {STORIES.map((c) => (
                 <article
                   key={c.title + c.date}
-                  className="flex cursor-pointer flex-col gap-3.5 border-t border-[#DDE6F0] pt-[22px] transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2.5"
+                  className="flex flex-col gap-3.5 border-t border-[#DDE6F0] pt-[22px] transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2.5"
                 >
                   <h3 style={{ margin: 0, fontFamily: "var(--font-display)", fontSize: 19, fontWeight: 600, lineHeight: 1.5, color: "#14406B" }}>
                     {c.title}
@@ -137,9 +137,8 @@ export default function StudentStories() {
                   <p style={{ margin: 0, fontSize: 14, lineHeight: 1.85, color: "#5B6B82" }} className="text-pretty">
                     {c.excerpt}
                   </p>
-                  <div style={{ marginTop: "auto", display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, paddingTop: 6 }}>
+                  <div style={{ marginTop: "auto", paddingTop: 6 }}>
                     <span style={{ fontSize: 13, letterSpacing: "0.06em", color: "#16233A" }}>{c.date}</span>
-                    <span style={{ fontSize: 13, fontWeight: 500, letterSpacing: "0.08em", color: "#3E77A6" }}>瞭解更多 →</span>
                   </div>
                 </article>
               ))}

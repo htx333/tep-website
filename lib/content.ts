@@ -10,6 +10,7 @@ export const navLinks = [
   { href: "/", label: "主頁" },
   { href: "/about", label: "關於我們" },
   { href: "/services", label: "服務" },
+  { href: "/stories", label: "學生分享" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "聯繫我們" },
 ];

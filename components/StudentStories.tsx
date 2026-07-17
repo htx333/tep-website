@@ -66,17 +66,16 @@ function Heading({ eyebrow, title, sub }: { eyebrow: string; title: string; sub:
 export default function StudentStories() {
   return (
     <div style={{ background: "#ffffff" }}>
-      {/* spacer so the pinned hero shows first */}
-      <div style={{ height: "100vh" }} />
-
-      {/* Pinned film hero — the panel below scrolls up and covers it */}
+      {/* Film hero — sticky-pinned inside a tall wrapper; the panel below
+          slides up over it via marginTop:-100vh, exactly like the home page's
+          gallery → 服務體系 cover transition. */}
+      <div style={{ position: "relative", height: "200vh", zIndex: 0 }}>
+        <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}>
       <section
         aria-label="學生分享 · 影片"
         style={{
-          position: "fixed",
+          position: "absolute",
           inset: 0,
-          zIndex: 0,
-          overflow: "hidden",
           background: "#ffffff",
           display: "flex",
           flexDirection: "column",
@@ -129,9 +128,11 @@ export default function StudentStories() {
           </div>
         </div>
       </section>
+        </div>
+      </div>
 
-      {/* Panel that slides up over the hero */}
-      <div style={{ position: "relative", zIndex: 5 }}>
+      {/* Panel slides up to cover the hero */}
+      <div style={{ position: "relative", zIndex: 5, marginTop: "-100vh" }}>
         <section
           aria-label="成功案例"
           style={{

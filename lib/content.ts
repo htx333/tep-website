@@ -360,18 +360,26 @@ export const mentors = [
 export type Partner = { name: string; logo?: string };
 
 export const partners: Partner[] = [
-  { name: "Goldman Sachs" },
-  { name: "BlackRock", logo: "/logos/blackrock.png" },
+  { name: "Goldman Sachs", logo: "/logos/goldman-sachs.png" },
+  { name: "Morgan Stanley", logo: "/logos/morgan-stanley.png" },
   { name: "J.P. Morgan", logo: "/logos/jpmorgan.webp" },
   { name: "UBS", logo: "/logos/ubs.png" },
   { name: "Citi", logo: "/logos/citi.png" },
-  { name: "Morgan Stanley", logo: "/logos/morgan-stanley.jpeg" },
-  { name: "HSBC 滙豐", logo: "/logos/hsbc.png" },
-  { name: "中金公司 CICC", logo: "/logos/cicc.png" },
   { name: "Barclays", logo: "/logos/barclays.webp" },
+  { name: "HSBC 滙豐", logo: "/logos/hsbc.png" },
+  { name: "BlackRock", logo: "/logos/blackrock.png" },
+  { name: "中金公司 CICC", logo: "/logos/cicc.png" },
   { name: "中國銀行", logo: "/logos/bank-of-china.webp" },
+  { name: "中信 CITIC", logo: "/logos/citic.png" },
+  { name: "華泰證券", logo: "/logos/huatai.webp" },
   { name: "大華銀行 UOB", logo: "/logos/uob.webp" },
   { name: "Daiwa", logo: "/logos/daiwa.png" },
+  { name: "ARK", logo: "/logos/ark.jpeg" },
+  { name: "泰康", logo: "/logos/taikang.jpeg" },
+  { name: "Deloitte", logo: "/logos/deloitte.jpeg" },
+  { name: "EY", logo: "/logos/ey.webp" },
+  { name: "KPMG", logo: "/logos/kpmg.webp" },
+  { name: "PwC", logo: "/logos/pwc.webp" },
 ];
 
 // ---------- FAQ ----------

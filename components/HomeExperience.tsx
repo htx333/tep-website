@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { motto } from "@/lib/content";
+import PartnerLogos from "@/components/PartnerLogos";
 
 /**
  * 主頁 — cinematic scroll experience imported from the TEP Home design
@@ -683,6 +684,24 @@ export default function HomeExperience() {
                 background: "var(--tep-navy)",
               }}
             />
+          </div>
+        </section>
+
+        {/* 4 · 目標公司 logo wall */}
+        <section style={{ background: "var(--tep-mist)", padding: "96px 24px" }}>
+          <div style={{ maxWidth: 1152, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: 13, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.3em", color: "var(--tep-blue)" }}>
+                Target Companies
+              </div>
+              <h2 style={{ margin: "12px 0 0", fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 700, color: "var(--tep-navy)" }}>
+                目標公司
+              </h2>
+              <p style={{ margin: "16px 0 0", fontSize: 16, lineHeight: 1.75, color: "var(--tep-ink-soft)" }}>
+                導師與內推網絡覆蓋全球頂級金融機構。
+              </p>
+            </div>
+            <PartnerLogos />
           </div>
         </section>
       </div>

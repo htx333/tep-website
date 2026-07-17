@@ -361,17 +361,17 @@ export type Partner = { name: string; logo?: string };
 
 export const partners: Partner[] = [
   { name: "Goldman Sachs" },
-  { name: "BlackRock" },
-  { name: "J.P. Morgan" },
-  { name: "UBS" },
-  { name: "Citi" },
-  { name: "Morgan Stanley" },
-  { name: "HSBC 滙豐" },
-  { name: "中金公司 CICC" },
-  { name: "Barclays" },
-  { name: "中國銀行" },
-  { name: "大華銀行 UOB" },
-  { name: "Daiwa" },
+  { name: "BlackRock", logo: "/logos/blackrock.png" },
+  { name: "J.P. Morgan", logo: "/logos/jpmorgan.webp" },
+  { name: "UBS", logo: "/logos/ubs.svg" },
+  { name: "Citi", logo: "/logos/citi.png" },
+  { name: "Morgan Stanley", logo: "/logos/morgan-stanley.jpeg" },
+  { name: "HSBC 滙豐", logo: "/logos/hsbc.png" },
+  { name: "中金公司 CICC", logo: "/logos/cicc.png" },
+  { name: "Barclays", logo: "/logos/barclays.webp" },
+  { name: "中國銀行", logo: "/logos/bank-of-china.webp" },
+  { name: "大華銀行 UOB", logo: "/logos/uob.webp" },
+  { name: "Daiwa", logo: "/logos/daiwa.png" },
 ];
 
 // ---------- FAQ ----------

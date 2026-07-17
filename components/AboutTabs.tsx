@@ -29,23 +29,25 @@ export default function AboutTabs() {
             <p className="mt-10 text-center font-display text-2xl font-semibold leading-relaxed text-blue">
               「{background.slogan}」
             </p>
-            <div className="mt-10 space-y-6 text-base leading-loose text-ink">
-              {background.paragraphs.map((p) => (
-                <p key={p.slice(0, 12)}>{p}</p>
+            <div className="mt-12 space-y-8">
+              {background.sections.map((s) => (
+                <div key={s.heading} className="border-l-4 border-blue/70 pl-5">
+                  <h3 className="font-display text-lg font-bold text-navy">
+                    {s.heading}
+                  </h3>
+                  <p className="mt-2 text-base leading-loose text-ink-soft">
+                    {s.body}
+                  </p>
+                </div>
               ))}
             </div>
-            <blockquote className="my-12 border-l-4 border-blue bg-mist px-8 py-6">
+            <div className="mt-12 rounded-2xl bg-mist px-8 py-8">
               <p className="text-lg leading-relaxed text-navy">
-                「{background.quote}」
+                {background.closing}
               </p>
-              <footer className="mt-3 text-sm text-ink-soft">
-                —— {background.quoteBy}
-              </footer>
-            </blockquote>
-            <div className="space-y-6 text-base leading-loose text-ink">
-              {background.paragraphsAfterQuote.map((p) => (
-                <p key={p.slice(0, 12)}>{p}</p>
-              ))}
+              <p className="mt-4 text-right font-display text-lg italic text-blue">
+                —— {background.signedBy}
+              </p>
             </div>
           </div>
         </section>
@@ -124,10 +126,13 @@ export default function AboutTabs() {
               sub="香港行內頂級在職導師，全程一對一跟進。"
             />
             <div className="mt-14 grid gap-8 md:grid-cols-3">
-              {mentors.map((m) => (
-                <TeamCard key={m.name} {...m} />
+              {mentors.map((m, i) => (
+                <TeamCard key={i} {...m} />
               ))}
             </div>
+            <p className="mt-8 text-center text-sm text-ink-faint">
+              首席培訓師領銜，導師陣容持續擴充中。
+            </p>
           </div>
         </section>
       )}

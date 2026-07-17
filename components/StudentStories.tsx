@@ -66,14 +66,16 @@ function Heading({ eyebrow, title, sub }: { eyebrow: string; title: string; sub:
 export default function StudentStories() {
   return (
     <div style={{ background: "#ffffff" }}>
-      {/* Film hero — occupies the top half of the first view; scroll down
-          for the full success-cases list below. */}
+      {/* Film hero — pinned in the top half; the success-cases panel below
+          scrolls up and seamlessly covers it. */}
       <section
         aria-label="學生分享 · 影片"
         style={{
           height: "50vh",
           background: "#0A1F3D",
-          position: "relative",
+          position: "sticky",
+          top: 0,
+          zIndex: 0,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -105,8 +107,8 @@ export default function StudentStories() {
           </svg>
       </section>
 
-      {/* Success cases — fills the viewport below; scroll for the full list */}
-      <div style={{ position: "relative" }}>
+      {/* Success cases — rise up over the pinned video and cover it on scroll */}
+      <div style={{ position: "relative", zIndex: 5 }}>
         <section
           aria-label="成功案例"
           style={{

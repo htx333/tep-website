@@ -253,13 +253,22 @@ export default function ServicePlansFlowchart() {
           {TIERS.map((t, i) => (
             <div key={t.key} data-tep-anim style={{ display: "flex", justifyContent: "center", ...anim(0.45 + i * 0.12) }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: 12, color: "var(--tep-ink-soft)" }}>投入強度</span>
-                <span style={{ display: "flex", gap: 4 }}>
+                <span style={{ fontSize: 12, color: "#52606f" }}>投入強度</span>
+                <span style={{ display: "flex", gap: 5 }}>
                   {Array.from({ length: 5 }).map((_, s) => (
-                    <span key={s} style={{ width: 18, height: 6, borderRadius: 3, background: s < t.key ? t.color : "var(--tep-line)" }} />
+                    <span
+                      key={s}
+                      style={{
+                        width: 24,
+                        height: 9,
+                        borderRadius: 5,
+                        background: s < t.key ? "#14406b" : "#dce4ee",
+                        boxShadow: s < t.key ? "none" : "inset 0 0 0 1px #cdd8e6",
+                      }}
+                    />
                   ))}
                 </span>
-                <span style={{ fontSize: 12, color: "var(--tep-ink-soft)" }}>{t.key}/5</span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#14406b" }}>{t.key}/5</span>
               </div>
             </div>
           ))}
@@ -279,7 +288,7 @@ export default function ServicePlansFlowchart() {
                   >
                     <div
                       onMouseEnter={t.prev ? () => setOpenPrev(t.key) : undefined}
-                      style={{ background: "var(--tep-navy-deep)", color: t.gold ? "var(--tep-gold)" : "var(--tep-white)", padding: "11px 16px", fontSize: 13, letterSpacing: "0.12em", display: "flex", alignItems: "center", justifyContent: t.prev ? "space-between" : "flex-start", gap: 8, cursor: t.prev ? "pointer" : "default" }}
+                      style={{ background: "#0a1f3d", color: t.gold ? "#d9b96a" : "#ffffff", fontWeight: 600, padding: "11px 16px", fontSize: 13, letterSpacing: "0.12em", display: "flex", alignItems: "center", justifyContent: t.prev ? "space-between" : "flex-start", gap: 8, cursor: t.prev ? "pointer" : "default" }}
                     >
                       <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
                         <span style={{ width: 8, height: 8, borderRadius: "50%", background: t.color, flex: "none" }} />
@@ -321,9 +330,9 @@ export default function ServicePlansFlowchart() {
 
                   <Connector gold={t.gold} />
 
-                  <div style={{ padding: "12px 16px", background: t.gold ? "var(--tep-navy-deep)" : "var(--tep-navy)", border: `1px solid ${t.gold ? "var(--tep-gold)" : "var(--tep-navy)"}` }}>
-                    <div style={{ fontSize: 11, letterSpacing: "0.2em", color: t.gold ? "var(--tep-gold)" : "rgba(255,255,255,0.75)", fontWeight: 600 }}>理想成果</div>
-                    <div style={{ marginTop: 4, fontSize: 13.5, color: "var(--tep-white)", lineHeight: 1.7 }}>{t.outcome}</div>
+                  <div style={{ padding: "14px 16px", background: t.gold ? "#0a1f3d" : "#14406b", border: `1px solid ${t.gold ? "#c9a659" : "#14406b"}` }}>
+                    <div style={{ fontSize: 11, letterSpacing: "0.2em", color: t.gold ? "#d9b96a" : "rgba(255,255,255,0.9)", fontWeight: 600 }}>理想成果</div>
+                    <div style={{ marginTop: 5, fontSize: 13.5, color: "#ffffff", lineHeight: 1.7 }}>{t.outcome}</div>
                   </div>
                 </div>
               );

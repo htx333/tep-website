@@ -363,7 +363,7 @@ export const partners: Partner[] = [
   { name: "Goldman Sachs" },
   { name: "BlackRock", logo: "/logos/blackrock.png" },
   { name: "J.P. Morgan", logo: "/logos/jpmorgan.webp" },
-  { name: "UBS", logo: "/logos/ubs.svg" },
+  { name: "UBS", logo: "/logos/ubs.png" },
   { name: "Citi", logo: "/logos/citi.png" },
   { name: "Morgan Stanley", logo: "/logos/morgan-stanley.jpeg" },
   { name: "HSBC 滙豐", logo: "/logos/hsbc.png" },

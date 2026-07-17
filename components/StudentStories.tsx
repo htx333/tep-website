@@ -66,31 +66,20 @@ function Heading({ eyebrow, title, sub }: { eyebrow: string; title: string; sub:
 export default function StudentStories() {
   return (
     <div style={{ background: "#ffffff" }}>
-      {/* Film hero — sticky-pinned inside a tall wrapper; the panel below
-          slides up over it via marginTop:-100vh, exactly like the home page's
-          gallery → 服務體系 cover transition. */}
-      <div style={{ position: "relative", height: "200vh", zIndex: 0 }}>
-        <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}>
+      {/* Film hero — occupies the top half of the first view; scroll down
+          for the full success-cases list below. */}
       <section
         aria-label="學生分享 · 影片"
         style={{
-          position: "absolute",
-          inset: 0,
-          background: "#ffffff",
+          height: "50vh",
+          background: "#0A1F3D",
+          position: "relative",
           display: "flex",
-          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
         }}
       >
-        <div
-          style={{
-            flex: 1,
-            background: "#0A1F3D",
-            position: "relative",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
           <div style={{ textAlign: "center", color: "rgba(255,255,255,0.85)" }}>
             <div className="mx-auto mb-[18px] flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full border border-white/45 transition-colors hover:bg-white/10">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" style={{ marginLeft: 3 }}>
@@ -114,13 +103,10 @@ export default function StudentStories() {
           >
             <path d="M0 160V90h60V50h40v110M140 160V70h70v90M250 160V30h50V10h30v150M370 160V80h60v80M470 160V40h45v120M555 160V95h55v65M650 160V20h40v20h35v120M765 160V70h60v90M865 160V50h50v110M955 160V85h55v75M1050 160V35h45v125M1135 160V75h65v85" />
           </svg>
-        </div>
       </section>
-        </div>
-      </div>
 
-      {/* Panel slides up to cover the hero */}
-      <div style={{ position: "relative", zIndex: 5, marginTop: "-100vh" }}>
+      {/* Success cases — fills the viewport below; scroll for the full list */}
+      <div style={{ position: "relative" }}>
         <section
           aria-label="成功案例"
           style={{

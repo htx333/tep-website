@@ -8,11 +8,12 @@ export const metadata: Metadata = {
 };
 
 const infoRows = [
-  { label: "電郵", value: contact.email },
-  { label: "電話", value: contact.phone },
-  { label: "WhatsApp", value: contact.whatsapp },
   { label: "地址", value: contact.address },
-  { label: "辦公時間", value: contact.hours },
+  { label: "電話", value: contact.phone },
+  { label: "流動電話", value: contact.mobile },
+  { label: "微信", value: contact.wechat },
+  { label: "電郵", value: contact.email },
+  { label: "網站", value: contact.website },
 ];
 
 export default function ContactPage() {

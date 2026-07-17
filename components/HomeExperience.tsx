@@ -25,6 +25,7 @@ const SERVICE_CARDS = [
     cn: "啟航",
     href: "/services#foundation",
     tagline: "「打穩求職基石，從職涯定位到面試實戰的一站式求職起跑點。」",
+    img: "/service/service-foundation.jpg",
     placeholder: "Foundation 計畫圖片",
     apex: false,
   },
@@ -34,6 +35,7 @@ const SERVICE_CARDS = [
     cn: "尊享",
     href: "/services#premier",
     tagline: "「鎖定優質名企，以智能內推與終面優先權精準敲開職場大門。」",
+    img: "/service/service-premier.jpg",
     placeholder: "Premier 計畫圖片",
     apex: false,
   },
@@ -43,6 +45,7 @@ const SERVICE_CARDS = [
     cn: "私享",
     href: "/services#private",
     tagline: "「導師強勢內推，以實習實戰保障助你踏出關鍵的第一步。」",
+    img: "/service/service-private.jpg",
     placeholder: "Private 計畫圖片",
     apex: false,
   },
@@ -52,6 +55,7 @@ const SERVICE_CARDS = [
     cn: "卓越",
     href: "/services#sovereign",
     tagline: "「解鎖專業資格認證，突破職涯瓶頸，奠定不可替代的競爭力。」",
+    img: "/service/service-sovereign.jpg",
     placeholder: "Sovereign 計畫圖片",
     apex: false,
   },
@@ -61,6 +65,7 @@ const SERVICE_CARDS = [
     cn: "至尊",
     href: "/services#apex",
     tagline: "「20年+頂尖資深銀行家親授，站在巨人肩上掌握頂級職涯藍圖。」",
+    img: "/service/service-apex.jpg",
     placeholder: "Apex 計畫圖片",
     apex: true,
   },
@@ -264,33 +269,33 @@ export default function HomeExperience() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  const captionOverlay = (
-    <div style={{ position: "absolute", left: 48, bottom: 48, pointerEvents: "none" }}>
+  const caption = (title: string, desc: string) => (
+    <div style={{ position: "absolute", left: 48, bottom: 48, pointerEvents: "none", maxWidth: 420 }}>
       <div style={{ width: 28, height: 1, background: "var(--tep-gold)", marginBottom: 10 }} />
       <h3
         style={{
           margin: 0,
           fontFamily: "var(--font-display)",
-          fontSize: 16,
+          fontSize: 18,
           fontWeight: 600,
           letterSpacing: "0.06em",
           color: "#fff",
           textShadow: "0 1px 14px rgba(10,31,61,0.55)",
         }}
       >
-        （預留標題）
+        {title}
       </h3>
       <p
         style={{
-          margin: "5px 0 0",
-          fontSize: 12,
-          lineHeight: 1.7,
-          maxWidth: 280,
-          color: "rgba(255,255,255,0.85)",
+          margin: "8px 0 0",
+          fontSize: 14,
+          lineHeight: 1.8,
+          maxWidth: 400,
+          color: "rgba(255,255,255,0.9)",
           textShadow: "0 1px 12px rgba(10,31,61,0.55)",
         }}
       >
-        （預留說明文字）
+        {desc}
       </p>
     </div>
   );
@@ -423,21 +428,21 @@ export default function HomeExperience() {
           >
             <div ref={g1Ref} style={{ position: "absolute", inset: 0 }}>
               <div ref={gz1Ref} style={{ position: "absolute", inset: 0, willChange: "transform" }}>
-                <Slot src="/hk-skyline.png" label="圖片組 1／3 — 拖放整版圖片" />
+                <Slot src="/gallery/talent.jpg" label="Talent · 人才" />
               </div>
-              {captionOverlay}
+              {caption("Talent　人才", "從迷惘到方向，為原石般的你錨定專屬的金融職涯定位。")}
             </div>
             <div ref={g2Ref} style={{ position: "absolute", inset: 0, opacity: 0 }}>
               <div ref={gz2Ref} style={{ position: "absolute", inset: 0, willChange: "transform" }}>
-                <Slot label="圖片組 2／3 — 拖放整版圖片" />
+                <Slot src="/gallery/elite.jpg" label="Elite · 菁英" />
               </div>
-              {captionOverlay}
+              {caption("Elite　菁英", "將潛力淬鍊為實力，帶你踏入頂尖機構的核心舞台。")}
             </div>
             <div ref={g3Ref} style={{ position: "absolute", inset: 0, opacity: 0 }}>
               <div ref={gz3Ref} style={{ position: "absolute", inset: 0, willChange: "transform" }}>
-                <Slot label="圖片組 3／3 — 拖放整版圖片" />
+                <Slot src="/gallery/professional.jpg" label="Professional · 專業人士" />
               </div>
-              {captionOverlay}
+              {caption("Professional　專業人士", "從站穩腳步到引領全局，陪你走向金融菁英的頂層。")}
             </div>
           </div>
 
@@ -585,7 +590,7 @@ export default function HomeExperience() {
                       boxShadow: "var(--shadow-card)",
                     }}
                   >
-                    <Slot label={c.placeholder} />
+                    <Slot src={c.img} label={c.placeholder} />
                     <div
                       style={{
                         position: "absolute",

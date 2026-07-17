@@ -446,9 +446,10 @@ export const bookingSlots = ["10:00", "11:30", "14:00", "15:30", "17:00"];
 
 export const contact = {
   echo: "Tailored. Expert. Prestigious.",
-  email: "info@tepcareers.com", // 佔位，之後更新
+  address: "Unit A2, 4/F., Block A, Po Yip Building, 62-70 Texaco Road, Tsuen Wan, NT",
   phone: "+852 0000 0000", // 佔位，之後更新
-  whatsapp: "+852 0000 0000", // 佔位，之後更新
-  address: "香港中環（地址待定）", // 佔位，之後更新
-  hours: "星期一至五 09:00–18:00",
+  mobile: "+852 0000 0000", // 佔位，之後更新
+  wechat: "blablabla", // 佔位，之後更新
+  email: "cs@tepcareers.con", // 佔位，之後更新
+  website: "TepCarees.com", // 佔位，之後更新
 };

@@ -78,7 +78,6 @@ export default function AboutTabs() {
                     {founder.nameEn}
                   </span>
                 </h3>
-                <div className="mt-2 text-sm text-blue">{founder.title}</div>
                 <p className="mt-6 border-t border-line pt-6 text-sm italic leading-relaxed text-ink-soft">
                   「{founder.quote}」
                 </p>

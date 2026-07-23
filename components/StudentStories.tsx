@@ -5,7 +5,7 @@ import Link from "next/link";
  * The film hero stays pinned (position: fixed) while the white 成功案例
  * panel scrolls up and seamlessly covers it — matching the home page's
  * "image 4 → 服務體系" cover transition. Then a 3-column grid of student
- * success stories and a navy CTA band. Video and later cases are placeholders.
+ * success stories and a navy CTA band. The video remains a placeholder.
  */
 
 type Story = { title: string; excerpt: string; date: string };
@@ -30,21 +30,21 @@ const STORIES: Story[] = [
     date: "2025-12-08",
   },
   {
-    title: "（案例標題預留）",
+    title: "王同學 — 從零 Offer 到 3 份實習保障",
     excerpt:
-      "（案例摘要預留：一段約兩至三行的分享節錄，描述學員背景、TEP 的介入方式與最終成果。）",
+      "「我的成績、專業基礎和實習經歷都不差，卻在一輪輪投遞後始終換不到 Offer。反覆修改履歷仍沒有方向，挫敗感令我一度懷疑自己的能力。加入 TEP 後，導師重新定位我的求職策略，逐項修正履歷與面試盲點，並按我的目標行業落實 3 份實習機會保障。終於，我不再靠海投碰運氣，而是以清晰路徑累積真正能轉化為 Offer 的經驗。」",
     date: "2025-10-02",
   },
   {
-    title: "（案例標題預留）",
+    title: "趙同學 — 建立獨立投資判斷",
     excerpt:
-      "（案例摘要預留：一段約兩至三行的分享節錄，描述學員背景、TEP 的介入方式與最終成果。）",
+      "「身為超高淨值家族的下一代，我從不缺少接觸投資的機會，真正欠缺的是判斷複雜產品與挑戰專業顧問的底氣。TEP 安排擁有 20 年以上資歷的銀行家，以多資產配置、SAA／TAA、技術分析與信託架構帶我實戰拆解家族組合。現在，我能獨立完成投資備忘錄、評估風險回報，並在家族投資會議中提出有根據的配置建議，從被動旁聽者成為能為家族資產負責的決策參與者。」",
     date: "2025-07-18",
   },
   {
-    title: "（案例標題預留）",
+    title: "周同學 — 從海投失焦到精準終面",
     excerpt:
-      "（案例摘要預留：一段約兩至三行的分享節錄，描述學員背景、TEP 的介入方式與最終成果。）",
+      "「我曾同時投遞投行、資管和顧問職位，履歷看似豐富，卻因定位分散而一次次石沉大海。Premier 尊享計畫透過系統智能內推，按我的優勢精準匹配職位，再由首席面試官針對目標公司安排線下模擬與深度復盤。獲得優先終面機會後，我終於把經歷說成清晰、有說服力的職涯故事，並成功拿下資產管理公司的 Offer。」",
     date: "2025-04-25",
   },
 ];
@@ -142,14 +142,6 @@ export default function StudentStories() {
                   </div>
                 </article>
               ))}
-            </div>
-            <div className="mt-20 flex justify-center">
-              <button
-                type="button"
-                className="rounded-md border border-[#14406B]/25 px-10 py-3.5 text-[15px] font-medium text-[#14406B] transition-colors hover:border-[#14406B] hover:bg-mist"
-              >
-                載入更多
-              </button>
             </div>
           </div>
         </section>

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:booking": "node --test tests/booking-calendly.test.mjs"
+    "test:booking": "node --test tests/booking-calendly.test.mjs",
+    "test:stories": "node --test tests/student-stories.test.mjs"
   },
   "dependencies": {
     "next": "16.2.10",

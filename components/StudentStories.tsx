@@ -67,19 +67,16 @@ function Heading({ eyebrow, title, sub }: { eyebrow: string; title: string; sub:
 export default function StudentStories() {
   return (
     <div style={{ background: "#ffffff" }}>
-      {/* Film hero — pinned in the top half; the success-cases panel below
+      {/* Story poster — pinned in the top half; the success-cases panel below
           scrolls up and seamlessly covers it. */}
       <section
-        aria-label="學生分享 · 影片"
+        aria-label="學生分享 · 導師實戰教學"
         style={{
           height: "50vh",
           background: "#0A1F3D",
           position: "sticky",
           top: 0,
           zIndex: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           overflow: "hidden",
         }}
       >
@@ -91,33 +88,9 @@ export default function StudentStories() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-[#0A1F3D]/20 via-[#0A1F3D]/30 to-[#0A1F3D]/65"
-        />
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            textAlign: "center",
-            color: "rgba(255,255,255,0.9)",
-          }}
-        >
-          <div className="mx-auto mb-[18px] flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full border border-white/55 bg-[#0A1F3D]/20 backdrop-blur-sm transition-colors hover:bg-[#0A1F3D]/35">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" style={{ marginLeft: 3 }}>
-              <path d="M6 4l14 8-14 8z" />
-            </svg>
-          </div>
-          <p style={{ margin: 0, fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#E8C66A" }}>
-            Student Stories Film
-          </p>
-          <p style={{ margin: "8px 0 0", fontSize: 13, letterSpacing: "0.1em", color: "rgba(255,255,255,0.78)" }}>
-            專業導師實戰教學
-          </p>
-        </div>
       </section>
 
-      {/* Success cases — rise up over the pinned video and cover it on scroll */}
+      {/* Success cases — rise up over the pinned poster and cover it on scroll */}
       <div style={{ position: "relative", zIndex: 5 }}>
         <section
           aria-label="成功案例"

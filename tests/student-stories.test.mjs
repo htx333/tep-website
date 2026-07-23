@@ -14,6 +14,9 @@ test("student stories contain the three completed cases without placeholders", a
   assert.match(html, /周同學 — 從海投失焦到精準終面/);
   assert.match(html, /3 份實習機會保障/);
   assert.match(html, /系統智能內推/);
+  assert.match(html, /student-stories-film-poster\.png/);
+  assert.match(html, /專業導師實戰教學/);
   assert.doesNotMatch(html, /案例標題預留|案例摘要預留/);
   assert.doesNotMatch(html, /載入更多/);
+  assert.doesNotMatch(html, /宣傳影片預留位置/);
 });

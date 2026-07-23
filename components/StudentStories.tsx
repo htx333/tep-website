@@ -1,11 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
 
 /**
  * 學生分享 — imported from the "學生分享 v2" design (claude.ai/design).
- * The film hero stays pinned (position: fixed) while the white 成功案例
+ * The film poster stays pinned while the white 成功案例
  * panel scrolls up and seamlessly covers it — matching the home page's
  * "image 4 → 服務體系" cover transition. Then a 3-column grid of student
- * success stories and a navy CTA band. The video remains a placeholder.
+ * success stories and a navy CTA band.
  */
 
 type Story = { title: string; excerpt: string; date: string };
@@ -82,29 +83,38 @@ export default function StudentStories() {
           overflow: "hidden",
         }}
       >
-          <div style={{ textAlign: "center", color: "rgba(255,255,255,0.85)" }}>
-            <div className="mx-auto mb-[18px] flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full border border-white/45 transition-colors hover:bg-white/10">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" style={{ marginLeft: 3 }}>
-                <path d="M6 4l14 8-14 8z" />
-              </svg>
-            </div>
-            <p style={{ margin: 0, fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A659" }}>
-              Student Stories Film
-            </p>
-            <p style={{ margin: "8px 0 0", fontSize: 13, letterSpacing: "0.1em", color: "rgba(255,255,255,0.6)" }}>
-              宣傳影片預留位置（16:9）
-            </p>
+        <Image
+          src="/student-stories-film-poster.png"
+          alt="金融業導師在高層會議室向四位大學生講解投資分析"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-[#0A1F3D]/20 via-[#0A1F3D]/30 to-[#0A1F3D]/65"
+        />
+        <div
+          style={{
+            position: "relative",
+            zIndex: 1,
+            textAlign: "center",
+            color: "rgba(255,255,255,0.9)",
+          }}
+        >
+          <div className="mx-auto mb-[18px] flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full border border-white/55 bg-[#0A1F3D]/20 backdrop-blur-sm transition-colors hover:bg-[#0A1F3D]/35">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" style={{ marginLeft: 3 }}>
+              <path d="M6 4l14 8-14 8z" />
+            </svg>
           </div>
-          <svg
-            viewBox="0 0 1200 160"
-            preserveAspectRatio="none"
-            style={{ position: "absolute", left: 0, right: 0, bottom: 0, width: "100%", height: 120, opacity: 0.06, pointerEvents: "none" }}
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="2"
-          >
-            <path d="M0 160V90h60V50h40v110M140 160V70h70v90M250 160V30h50V10h30v150M370 160V80h60v80M470 160V40h45v120M555 160V95h55v65M650 160V20h40v20h35v120M765 160V70h60v90M865 160V50h50v110M955 160V85h55v75M1050 160V35h45v125M1135 160V75h65v85" />
-          </svg>
+          <p style={{ margin: 0, fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#E8C66A" }}>
+            Student Stories Film
+          </p>
+          <p style={{ margin: "8px 0 0", fontSize: 13, letterSpacing: "0.1em", color: "rgba(255,255,255,0.78)" }}>
+            專業導師實戰教學
+          </p>
+        </div>
       </section>
 
       {/* Success cases — rise up over the pinned video and cover it on scroll */}

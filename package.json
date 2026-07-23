@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:booking": "node --test tests/booking-calendly.test.mjs",
+    "test:contact": "node --test tests/contact-info.test.mjs",
     "test:stories": "node --test tests/student-stories.test.mjs"
   },
   "dependencies": {

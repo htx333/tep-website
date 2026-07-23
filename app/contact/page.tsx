@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const infoRows = [
   { label: "地址", value: contact.address },
   { label: "電話", value: contact.phone },
-  { label: "流動電話", value: contact.mobile },
+  { label: "LinkedIn", value: contact.linkedin },
   { label: "微信", value: contact.wechat },
   { label: "電郵", value: contact.email },
   { label: "網站", value: contact.website },

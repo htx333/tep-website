@@ -10,6 +10,7 @@
     "test:booking": "node --test tests/booking-calendly.test.mjs",
     "test:contact": "node --test tests/contact-info.test.mjs",
     "test:founder": "node --test tests/about-founder.test.mjs",
+    "test:mentors": "node --test tests/about-mentors.test.mjs",
     "test:stories": "node --test tests/student-stories.test.mjs"
   },
   "dependencies": {

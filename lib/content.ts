@@ -335,7 +335,7 @@ export const founder = {
 // 導師團隊（首席培訓師領銜，其餘席位陸續公布）
 export const mentors = [
   {
-    name: "Szzy Wong",
+    name: "Szey Wong",
     role: "首席培訓師",
     photo: "/team/szzy-wong.jpg",
     bullets: [
@@ -446,7 +446,7 @@ export const bookingSlots = ["10:00", "11:30", "14:00", "15:30", "17:00"];
 export const contact = {
   echo: "Tailored. Expert. Prestigious.",
   address: "Unit A2, 4/F., Block A, Po Yip Building, 62-70 Texaco Road, Tsuen Wan, NT",
-  phone: "60990937",
+  phone: "+852 60990937",
   linkedin: "",
   wechat: "blablabla", // 佔位，之後更新
   email: "cs@tepcareers.con", // 佔位，之後更新

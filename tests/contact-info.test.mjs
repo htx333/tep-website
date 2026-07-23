@@ -9,7 +9,10 @@ test("contact panel shows the current phone and a blank LinkedIn row", async () 
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, />電話<\/dt><dd class="text-sm text-ink">60990937<\/dd>/);
+  assert.match(
+    html,
+    />電話<\/dt><dd class="text-sm text-ink">\+852 60990937<\/dd>/,
+  );
   assert.match(
     html,
     />LinkedIn<\/dt><dd class="text-sm text-ink"><\/dd>/,

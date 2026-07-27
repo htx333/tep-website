@@ -15,7 +15,7 @@ function Crown() {
 export default function ComparisonTable() {
   return (
     <div className="overflow-x-auto rounded-2xl border border-line bg-white shadow-sm">
-      <table className="w-full min-w-[840px] border-collapse text-sm">
+      <table className="w-full min-w-[1400px] border-collapse text-sm">
         <thead>
           <tr className="bg-navy text-white">
             <th className="sticky left-0 z-10 bg-navy px-5 py-4 text-left font-medium">
@@ -24,7 +24,7 @@ export default function ComparisonTable() {
             {comparison.features.map((f) => (
               <th
                 key={f}
-                className="px-3 py-4 text-center text-xs font-medium leading-snug"
+                className="whitespace-nowrap px-4 py-4 text-center text-xs font-medium"
               >
                 {f}
               </th>

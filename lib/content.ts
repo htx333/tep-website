@@ -310,7 +310,7 @@ export const background = {
   ],
   closing:
     "在就業市場劇烈變動的時代，我們期許 TEP 成為學生最務實、最可信賴的夥伴，將方向轉化為路徑，將努力轉化為成果。",
-  signedBy: "Bruce Cheung",
+  signedBy: "創始人寄語",
 };
 
 export const founder = {

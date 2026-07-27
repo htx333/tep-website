@@ -55,6 +55,16 @@ test("service overview and detail routes match the latest TEP Pitch", async () =
   assert.match(services, /輔導服務・遞升路徑/);
   assert.match(services, /Foundation/);
   assert.match(services, /Apex/);
+  assert.match(
+    services,
+    /min-w-\[1400px\]/,
+    "Comparison table should reserve enough width for single-line titles",
+  );
+  assert.match(
+    services,
+    /whitespace-nowrap/,
+    "Comparison titles should not wrap onto a second line",
+  );
 
   assert.match(foundation, /2日線下培訓：分析全球金融體系架構與前沿發展趨勢/);
   assert.match(foundation, /1-1導師解讀金融各細分賽道/);

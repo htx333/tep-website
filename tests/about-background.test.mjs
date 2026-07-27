@@ -16,3 +16,13 @@ test("TEP background displays the revised youth unemployment paragraph", async (
   );
   assert.doesNotMatch(html, /失業率恐滯留 4% 水平/);
 });
+
+test("TEP background labels the closing note as a founder message", async () => {
+  const response = await fetch(backgroundUrl);
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  const visibleHtml = html.replaceAll("<!-- -->", "");
+  assert.match(visibleHtml, /—— 創始人寄語/);
+  assert.doesNotMatch(visibleHtml, /—— Bruce Cheung/);
+});

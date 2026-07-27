@@ -40,6 +40,22 @@ test("service overview and detail routes match the latest TEP Pitch", async () =
   assert.match(services, /錄像面試準備/);
   assert.match(services, /id="comparison"/);
 
+  const overviewIndex = services.indexOf("五大服務計畫");
+  const guidanceIndex = services.indexOf('id="guidance"');
+  const comparisonIndex = services.indexOf('id="comparison"');
+
+  assert.ok(
+    guidanceIndex > overviewIndex,
+    "Guidance progression should follow the five-plan overview",
+  );
+  assert.ok(
+    comparisonIndex > guidanceIndex,
+    "Comparison should follow the guidance progression",
+  );
+  assert.match(services, /輔導服務・遞升路徑/);
+  assert.match(services, /Foundation/);
+  assert.match(services, /Apex/);
+
   assert.match(foundation, /2日線下培訓：分析全球金融體系架構與前沿發展趨勢/);
   assert.match(foundation, /1-1導師解讀金融各細分賽道/);
   assert.match(foundation, /行業精英定製對口簡歷/);

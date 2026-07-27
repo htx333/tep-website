@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ComparisonTable from "@/components/ComparisonTable";
+import ServicePlansFlowchart from "@/components/ServicePlansFlowchart";
 import { tiers } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -86,6 +87,23 @@ export default function ServicesPage() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── 輔導服務遞升路徑 ───────────────────────────── */}
+      <section
+        id="guidance"
+        className="scroll-mt-24 px-4 py-16 sm:px-6"
+        style={{
+          background:
+            "linear-gradient(180deg, #dde7f2 0%, #e7eef5 45%, #ffffff 100%)",
+        }}
+      >
+        <div className="mx-auto max-w-[1280px]">
+          <ServicePlansFlowchart />
+          <p className="mt-4 text-center text-xs text-ink-faint">
+            將游標移至各進階計畫的「計畫內容」標題，即可展開該級已含的前級服務。
+          </p>
         </div>
       </section>
 

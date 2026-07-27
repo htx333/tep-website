@@ -27,7 +27,7 @@
 - Consumes: `ServicePlansFlowchart` from `@/components/ServicePlansFlowchart`.
 - Produces: A `/services#guidance` section ordered before `/services#comparison`.
 
-- [ ] **Step 1: Write the failing route test**
+- [x] **Step 1: Write the failing route test**
 
 Extend the `/services` route assertions:
 
@@ -43,7 +43,7 @@ assert.match(services, /Foundation/);
 assert.match(services, /Apex/);
 ```
 
-- [ ] **Step 2: Run RED**
+- [x] **Step 2: Run RED**
 
 Run:
 
@@ -53,7 +53,7 @@ node --test tests/services-content.test.mjs
 
 Expected: failure because `/services` does not yet contain `id="guidance"`.
 
-- [ ] **Step 3: Add the inline section**
+- [x] **Step 3: Add the inline section**
 
 Import `ServicePlansFlowchart` in `app/services/page.tsx`, then render:
 
@@ -75,7 +75,7 @@ Import `ServicePlansFlowchart` in `app/services/page.tsx`, then render:
 </section>
 ```
 
-- [ ] **Step 4: Run GREEN**
+- [x] **Step 4: Run GREEN**
 
 Run:
 
@@ -85,7 +85,7 @@ node --test tests/services-content.test.mjs tests/navigation-services.test.mjs
 
 Expected: all tests pass.
 
-- [ ] **Step 5: Verify and commit**
+- [x] **Step 5: Verify and commit**
 
 Run:
 

@@ -13,10 +13,11 @@ const aboutSections = [
   { id: "targets", label: "目標公司" },
 ];
 
-// FAQ 旁的下拉選單 — 輔導遞升系統 與 FAQ
-const faqItems = [
+// 服務下拉選單 — 五大計畫、遞升系統與項目比對
+const serviceItems = [
+  { href: "/services", label: "五大服務計畫" },
   { href: "/system", label: "輔導遞升系統" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/services#comparison", label: "項目比對" },
 ];
 
 function ChevronDown({ className = "" }: { className?: string }) {
@@ -55,7 +56,7 @@ export default function Navbar() {
         </Link>
 
         {/* 桌面選單 */}
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => {
             const active = pathname === link.href;
 
@@ -93,13 +94,16 @@ export default function Navbar() {
               );
             }
 
-            // FAQ — 懸停顯示 輔導遞升系統 與 FAQ 的下拉選單
-            if (link.href === "/faq") {
-              const grpActive = pathname === "/faq" || pathname === "/system";
+            // 服務 — 懸停顯示五大計畫、遞升系統與項目比對
+            if (link.href === "/services") {
+              const grpActive =
+                pathname === "/services" ||
+                pathname.startsWith("/services/") ||
+                pathname === "/system";
               return (
                 <div key={link.href} className="group relative">
                   <Link
-                    href="/faq"
+                    href="/services"
                     className={`flex items-center gap-1 rounded-md px-4 py-2 text-sm transition-colors ${
                       grpActive ? "font-medium text-navy" : "text-ink-soft group-hover:text-navy"
                     }`}
@@ -111,8 +115,8 @@ export default function Navbar() {
                     )}
                   </Link>
                   <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                    <div className="min-w-[176px] overflow-hidden rounded-xl border border-line bg-white py-2 shadow-[0_12px_40px_rgba(10,31,61,0.1)]">
-                      {faqItems.map((s) => (
+                    <div className="min-w-[184px] overflow-hidden rounded-xl border border-line bg-white py-2 shadow-[0_12px_40px_rgba(10,31,61,0.1)]">
+                      {serviceItems.map((s) => (
                         <Link
                           key={s.href}
                           href={s.href}
@@ -155,7 +159,7 @@ export default function Navbar() {
         {/* 手機選單按鈕 */}
         <button
           aria-label="開啟選單"
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
           onClick={() => setOpen(!open)}
         >
           <span
@@ -174,7 +178,7 @@ export default function Navbar() {
 
       {/* 手機下拉選單 */}
       {open && (
-        <nav className="border-t border-line bg-white px-4 pb-4 md:hidden">
+        <nav className="border-t border-line bg-white px-4 pb-4 lg:hidden">
           {navLinks.map((link) =>
             link.href === "/about" ? (
               <div key={link.href} className="border-b border-line">
@@ -200,11 +204,23 @@ export default function Navbar() {
                   ))}
                 </div>
               </div>
-            ) : link.href === "/faq" ? (
+            ) : link.href === "/services" ? (
               <div key={link.href} className="border-b border-line">
-                <div className="px-2 py-3 text-sm font-medium text-navy">{link.label}</div>
+                <Link
+                  href="/services"
+                  onClick={() => setOpen(false)}
+                  className={`block px-2 py-3 text-sm ${
+                    pathname === "/services" ||
+                    pathname.startsWith("/services/") ||
+                    pathname === "/system"
+                      ? "font-medium text-navy"
+                      : "text-ink-soft"
+                  }`}
+                >
+                  {link.label}
+                </Link>
                 <div className="pb-2">
-                  {faqItems.map((s) => (
+                  {serviceItems.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}

@@ -68,7 +68,7 @@ export default function PlanSection({
 
         {/* 黃金：一般錄取率對照 */}
         {detail.stats && (
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {detail.stats.map((s) => (
               <div
                 key={s.label}

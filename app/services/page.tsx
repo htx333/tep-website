@@ -90,7 +90,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── 項目比對 ───────────────────────────────────── */}
-      <section className="bg-navy-deep py-24">
+      <section id="comparison" className="scroll-mt-24 bg-navy-deep py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
             light

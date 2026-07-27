@@ -7,10 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:background": "node --test tests/about-background.test.mjs",
     "test:booking": "node --test tests/booking-calendly.test.mjs",
     "test:contact": "node --test tests/contact-info.test.mjs",
     "test:founder": "node --test tests/about-founder.test.mjs",
     "test:mentors": "node --test tests/about-mentors.test.mjs",
+    "test:navigation": "node --test tests/navigation-services.test.mjs",
+    "test:services": "node --test tests/services-content.test.mjs",
     "test:stories": "node --test tests/student-stories.test.mjs"
   },
   "dependencies": {

@@ -51,7 +51,10 @@ export default function ComparisonTable() {
                 <div className="flex items-center gap-2">
                   <div>
                     <div className="font-display text-base font-bold text-navy">
-                      {plan.en}
+                      {plan.price}
+                    </div>
+                    <div className="mt-0.5 text-xs font-medium text-blue">
+                      {plan.metal} · {plan.en}
                     </div>
                     <div className="text-xs text-ink-soft">{plan.name}</div>
                   </div>

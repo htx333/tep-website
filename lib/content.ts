@@ -35,7 +35,7 @@ export const tiers: Tier[] = [
     planName: "啟航計畫",
     planEn: "Foundation",
     baseLabel: "內容",
-    items: ["金融行業簡介", "職涯諮詢", "簡歷精修", "錄像面試技巧打磨"],
+    items: ["金融行業深度分析", "職涯諮詢", "簡歷精修", "線下面試技巧打磨"],
   },
   {
     id: "premier",
@@ -44,7 +44,7 @@ export const tiers: Tier[] = [
     planName: "尊享計畫",
     planEn: "Premier",
     baseLabel: "疊加內容",
-    items: ["優先終面機會", "系統智能內推", "線下面試技巧打磨"],
+    items: ["優先終面機會", "系統智能內推", "錄像面試準備"],
   },
   {
     id: "private",
@@ -53,7 +53,7 @@ export const tiers: Tier[] = [
     planName: "私享計畫",
     planEn: "Private",
     baseLabel: "疊加內容",
-    items: ["在職導師內推", "實習機會保障", "線下面試技巧打磨"],
+    items: ["在職導師內推", "實習機會保障", "錄像面試準備"],
   },
   {
     id: "sovereign",
@@ -104,20 +104,20 @@ export const planDetails: PlanDetail[] = [
     overlay: false,
     rows: [
       {
-        title: "金融行業簡介",
-        body: "解析全球金融體系架構與前沿發展趨勢，理解金融核心知識。",
+        title: "金融行業深度分析",
+        body: "2日線下培訓：分析全球金融體系架構與前沿發展趨勢，理解金融核心知識。",
       },
       {
         title: "職涯諮詢",
-        body: "1-1顧問解讀金融各細分賽道（投行、資管、私募股權、管理諮詢等）的職業路徑差異。",
+        body: "1-1導師解讀金融各細分賽道（投行、資管、私募股權、管理諮詢等）的職業路徑差異。",
       },
       {
         title: "簡歷精修",
-        body: "深度梳理個人經歷，定製對口簡歷。",
+        body: "深度梳理個人經歷，行業精英定製對口簡歷。",
       },
       {
-        title: "錄像面試技巧打磨",
-        body: "實戰錄像指導，打磨表達與應答能力。",
+        title: "線下面試技巧打磨",
+        body: "首席面試官親擬完整模擬面試，透過實戰完善面試技巧；深度復盤與反饋，強化臨場表現與溝通邏輯，全面提升面試勝率。",
       },
     ],
   },
@@ -129,15 +129,15 @@ export const planDetails: PlanDetail[] = [
     rows: [
       {
         title: "優先終面機會",
-        body: "行業包括四大、資產管理、顧問公司、家族辦公室、券商、投行、私人銀行等。",
+        body: "精準篩選高契合度職位，優先推薦至終面環節，提升曝光率與錄用機會；行業包括四大、資產管理、顧問公司、家族辦公室、券商、投行、私人銀行等。",
       },
       {
         title: "系統智能內推",
-        body: "依託算法系統精準匹配崗位資源，內推企業面試。",
+        body: "依託算法系統，精準匹配職位與個人優勢，實現高效智能內推；避免簡歷沉沒，顯著提升通過率。",
       },
       {
-        title: "線下面試技巧打磨",
-        body: "行業在職導師親擬模擬面試1-1實戰教學。",
+        title: "錄像面試準備",
+        body: "針對企業錄像面試要求，協助梳理回答內容、打磨表達技巧與鏡頭表現，並提供專業錄影及後期剪輯。",
       },
     ],
   },
@@ -156,8 +156,8 @@ export const planDetails: PlanDetail[] = [
         body: "親選實習行業和實習時期，行業包括四大、資產管理、家族辦公室、券商。",
       },
       {
-        title: "線下面試技巧打磨",
-        body: "行業在職導師親擬模擬面試1-1實戰教學：背調｜預期問答、自我介紹｜邏輯框架、企業文化｜行為面試。",
+        title: "錄像面試準備",
+        body: "針對企業錄像面試要求，協助梳理回答內容、打磨表達技巧與鏡頭表現，並提供專業錄影及後期剪輯；涵蓋背調｜預期問答、自我介紹｜邏輯框架、企業文化｜行為面試。",
       },
     ],
     referralNote:
@@ -166,6 +166,7 @@ export const planDetails: PlanDetail[] = [
       { value: "≤1%", label: "投行・頂級資產管理", note: "一般錄取率" },
       { value: "≤5%", label: "外資商業銀行", note: "一般錄取率" },
       { value: "15%", label: "四大會計事務所", note: "一般錄取率" },
+      { value: "100%", label: "錄取率", note: "錄像面試準備" },
     ],
   },
   {
@@ -176,8 +177,8 @@ export const planDetails: PlanDetail[] = [
     intro: "專業資格賦能",
     rows: [],
     quals: [
-      { code: "HKSI 1/7/8/12", desc: "銀行及財富管理前台入門資格" },
-      { code: "SFC Type 4, 9", desc: "資產管理與顧問業務進階認證" },
+      { code: "HKSI (Paper 1/7/8/12)", desc: "銀行及財富管理前台入門資格" },
+      { code: "SFC Type 1, 4, 9", desc: "資產管理與顧問業務進階認證" },
       { code: "IIQE (Paper 1-5)", desc: "理財策劃與保險領域合規要求" },
       { code: "IQE", desc: "退休金及強積金業務必備" },
     ],
@@ -194,12 +195,12 @@ export const planDetails: PlanDetail[] = [
       {
         no: "1",
         title: "交易",
-        body: "多資產類別、技術分析（RSI、MACD、VCP、K線、趨勢分析、量價分析）、戰略資產配置（SAA）、戰術資產配置（TAA）、客戶投資組合管理。",
+        body: "多資產類別、技術面分析。",
       },
       {
         no: "2",
         title: "家族治理",
-        body: "家族治理與頂層傳承（家族憲章擬定、跨代傳承、頂層政商脈絡）。",
+        body: "家族治理（家族憲章擬定）、頂層傳承（跨代傳承、頂層政商脈絡）。",
       },
       {
         no: "3",
@@ -209,7 +210,7 @@ export const planDetails: PlanDetail[] = [
       {
         no: "4",
         title: "家族聯盟",
-        body: "與其他家族學生共同成長，並拓展業界商業精英人脈。",
+        body: "建立家族聯盟，共享資源，拓展業界商業精英人脈。",
       },
     ],
     careerArrow: ["分析師", "經理", "助理副總裁", "副總裁"],
@@ -223,6 +224,8 @@ export const planDetails: PlanDetail[] = [
 export type ComparisonPlan = {
   name: string;
   en: string;
+  metal: string;
+  price: string;
   crowned?: boolean;
   dots: boolean[];
 };
@@ -247,26 +250,36 @@ export const comparison: {
     {
       name: "啟航計畫",
       en: "Foundation",
+      metal: "青銅",
+      price: "HKD20,000",
       dots: [true, true, true, false, false, false, false, false, false, false],
     },
     {
       name: "尊享計畫",
       en: "Premier",
+      metal: "白銀",
+      price: "HKD50,000",
       dots: [true, true, true, true, true, true, false, false, false, false],
     },
     {
       name: "私享計畫",
       en: "Private",
+      metal: "黃金",
+      price: "HKD200,000",
       dots: [true, true, true, true, true, true, true, true, false, false],
     },
     {
       name: "卓越計畫",
       en: "Sovereign",
+      metal: "鉑金",
+      price: "HKD500,000",
       dots: [true, true, true, true, true, true, true, true, true, false],
     },
     {
       name: "至尊計畫",
       en: "Apex",
+      metal: "鑽石",
+      price: "HKD2,000,000",
       crowned: true,
       dots: [true, true, true, true, true, true, true, true, true, true],
     },
@@ -280,7 +293,7 @@ export const background = {
   sections: [
     {
       heading: "失業風險浮現，畢業生首當其衝",
-      body: "畢業生失業率雖處低檔，然總商會示警 AI 普及將令失業率恐滯留 4% 水平。求職人數攀升，職位供給收縮，此乃結構性斷層之徵兆。",
+      body: "2026年，內地青年失業率高達約19%；全球青年失業率仍高達12.4%，求職人數攀升，職位供給收縮，就業競爭持續升溫，此乃結構性斷層之徵兆。",
     },
     {
       heading: "職位空缺急劇收縮",

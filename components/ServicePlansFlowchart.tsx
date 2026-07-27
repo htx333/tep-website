@@ -28,9 +28,9 @@ type Tier = {
   gold?: boolean;
 };
 
-const FOUNDATION = ["金融行業簡介", "職涯諮詢", "簡歷精修", "錄像面試技巧打磨"];
-const PREMIER_ADD = ["系統智能內推", "優先終面機會", "線下面試技巧打磨"];
-const PRIVATE_ADD = ["在職導師內推", "實習機會保障"];
+const FOUNDATION = ["金融行業深度分析", "職涯諮詢", "簡歷精修", "線下面試技巧打磨"];
+const PREMIER_ADD = ["優先終面機會", "系統智能內推", "錄像面試準備"];
+const PRIVATE_ADD = ["在職導師內推", "實習機會保障", "錄像面試準備"];
 
 const TIERS: Tier[] = [
   {
@@ -42,7 +42,7 @@ const TIERS: Tier[] = [
     icon: "foundation",
     items: FOUNDATION,
     prev: null,
-    outcome: "完成職涯定位，備妥專業簡歷與面試基本功。",
+    outcome: "理解金融核心知識，完成賽道定位、對口簡歷及線下面試準備。",
   },
   {
     key: 2,
@@ -53,7 +53,7 @@ const TIERS: Tier[] = [
     icon: "premier",
     items: PREMIER_ADD,
     prev: FOUNDATION,
-    outcome: "名企內推直達終面，取得首批實習面試與 Offer 機會。",
+    outcome: "優先終面、系統智能內推與專業錄像面試準備。",
   },
   {
     key: 3,
@@ -62,9 +62,9 @@ const TIERS: Tier[] = [
     en: "Private",
     cn: "私享計畫",
     icon: "private",
-    items: ["在職導師內推", "實習機會保障", "線下面試技巧打磨"],
+    items: PRIVATE_ADD,
     prev: [...FOUNDATION, ...PREMIER_ADD],
-    outcome: "實習機會保障落地，在職導師人脈同步累積。",
+    outcome: "現職導師親薦、實習機會保障，並完善錄像面試表現。",
   },
   {
     key: 4,
@@ -75,7 +75,7 @@ const TIERS: Tier[] = [
     icon: "sovereign",
     items: ["專業資格賦能"],
     prev: [...FOUNDATION, ...PREMIER_ADD, ...PRIVATE_ADD],
-    outcome: "專業資格加持，將實習表現轉化為 Return Offer 競爭力。",
+    outcome: "完成專業資格認證，實現合規掛牌。",
   },
   {
     key: 5,
@@ -87,7 +87,7 @@ const TIERS: Tier[] = [
     gold: true,
     items: ["20年+資歷銀行家親授"],
     prev: [...FOUNDATION, ...PREMIER_ADD, ...PRIVATE_ADD, "專業資格賦能"],
-    outcome: "頂級銀行家全程督導，鎖定香港金融全職錄用。",
+    outcome: "交易、家族治理、信託及家族聯盟全維度賦能。",
   },
 ];
 

@@ -13,7 +13,7 @@ test("service navigation owns the guidance system above comparison", async () =>
   const plansIndex = html.indexOf('href="/services">五大服務計畫');
   const systemIndex = html.indexOf('href="/system">輔導遞升系統');
   const comparisonIndex = html.indexOf(
-    'href="/services#comparison">項目比對',
+    'href="/services/comparison">項目比對',
   );
   const storiesIndex = html.indexOf('href="/stories">學生分享');
   const faqIndex = html.indexOf('href="/faq">FAQ');

@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import SectionHeading from "@/components/SectionHeading";
 import TeamCard from "@/components/TeamCard";
 import PartnerLogos from "@/components/PartnerLogos";
-import { background, founder, mentors } from "@/lib/content";
+import { background, mentors } from "@/lib/content";
 
-const SECTION_IDS = ["background", "founder", "mentors", "targets"] as const;
+const SECTION_IDS = ["background", "mentors", "targets"] as const;
 
 type TabId = (typeof SECTION_IDS)[number];
 
@@ -48,68 +47,6 @@ export default function AboutTabs() {
               <p className="mt-4 text-right font-display text-lg italic text-blue">
                 —— {background.signedBy}
               </p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── 創始人 ───────────────────────────────────── */}
-      {active === "founder" && (
-        <section className="bg-white py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <SectionHeading
-              eyebrow="Founder"
-              title="創始人"
-              sub={founder.tagline}
-            />
-            <div className="mt-14 grid gap-10 lg:grid-cols-[320px_1fr]">
-              <div className="flex flex-col items-center self-start rounded-2xl border border-line bg-mist p-10 text-center">
-                <Image
-                  src="/founder.png"
-                  alt={`${founder.name} ${founder.nameEn}`}
-                  width={144}
-                  height={144}
-                  className="h-36 w-36 rounded-full object-cover"
-                  priority
-                />
-                <h3 className="mt-6 text-xl font-bold text-navy">
-                  {founder.name}
-                  <span className="mt-1 block font-display text-lg font-medium">
-                    {founder.nameEn}
-                  </span>
-                </h3>
-                <p className="mt-6 border-t border-line pt-6 text-sm italic leading-relaxed text-ink-soft">
-                  「{founder.quote}」
-                </p>
-              </div>
-
-              <div className="space-y-8">
-                {founder.chapters.map((ch, i) => (
-                  <div key={ch.title} className="flex gap-5">
-                    <div className="flex flex-col items-center">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy text-sm font-semibold leading-none text-white">
-                        {i + 1}
-                      </div>
-                      {i < founder.chapters.length - 1 && (
-                        <div className="mt-2 w-px flex-1 bg-line" />
-                      )}
-                    </div>
-                    <div className="pb-2">
-                      <h4 className="text-lg font-bold text-navy">
-                        {ch.title}
-                      </h4>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-ink-soft">
-                        {ch.bullets.map((b) => (
-                          <li key={b.slice(0, 12)} className="flex gap-2">
-                            <span className="mt-[0.55em] h-1 w-1 shrink-0 rounded-full bg-blue" />
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </section>

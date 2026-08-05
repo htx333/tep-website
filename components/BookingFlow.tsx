@@ -1,12 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Script from "next/script";
 import { useSearchParams } from "next/navigation";
-import { bookingTypes } from "@/lib/content";
-
-const CALENDLY_URL =
-  "https://calendly.com/cs-tepcareers/30min?primary_color=1f4d96";
+import { bookingTypes, contact } from "@/lib/content";
 
 export default function BookingFlow() {
   const searchParams = useSearchParams();
@@ -36,15 +32,64 @@ export default function BookingFlow() {
         {bookingType.desc}
       </p>
 
-      <div
-        className="calendly-inline-widget mt-10 w-full overflow-hidden"
-        data-url={CALENDLY_URL}
-        style={{ minWidth: "320px", height: "700px" }}
-      />
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="afterInteractive"
-      />
+      <form
+        data-contact-form="true"
+        action={`mailto:${contact.email}`}
+        method="post"
+        encType="text/plain"
+        className="mx-auto mt-10 max-w-2xl rounded-2xl border border-line bg-mist/45 p-6 shadow-sm sm:p-10"
+      >
+        <input type="hidden" name="inquiryType" value={bookingType.id} />
+
+        <div className="grid gap-6 sm:grid-cols-2">
+          <label className="block sm:col-span-2">
+            <span className="text-sm font-semibold text-navy">姓名</span>
+            <input
+              name="name"
+              type="text"
+              autoComplete="name"
+              required
+              placeholder="請輸入你的姓名"
+              className="mt-2 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink-faint focus:border-blue"
+            />
+          </label>
+
+          <label className="block">
+            <span className="text-sm font-semibold text-navy">電話號碼</span>
+            <input
+              type="tel"
+              name="phone"
+              autoComplete="tel"
+              required
+              placeholder="例如：+852 9123 4567"
+              className="mt-2 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink-faint focus:border-blue"
+            />
+          </label>
+
+          <label className="block">
+            <span className="text-sm font-semibold text-navy">聯絡電郵</span>
+            <input
+              type="email"
+              name="email"
+              autoComplete="email"
+              required
+              placeholder="name@example.com"
+              className="mt-2 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink-faint focus:border-blue"
+            />
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          className="mt-8 flex w-full items-center justify-center gap-2 rounded-lg bg-navy px-6 py-3.5 text-sm font-semibold tracking-[0.08em] text-white transition-colors hover:bg-blue"
+        >
+          以電郵傳送資料
+          <span aria-hidden="true">→</span>
+        </button>
+        <p className="mt-4 text-center text-xs leading-relaxed text-ink-soft">
+          按下後會開啟你的電郵程式，並將以上資料寄送至 TEP。
+        </p>
+      </form>
     </div>
   );
 }

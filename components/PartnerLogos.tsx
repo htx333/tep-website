@@ -1,28 +1,33 @@
-import { partners } from "@/lib/content";
+import { partnerRows } from "@/lib/content";
 
 /**
- * 目標公司 logo 牆 — 白底、乾淨網格、底部「And more…」。
- * 每格為一個 logo 位，顯示正式 logo 圖片（全彩），並統一裁邊與高度以對齊。
+ * 目標公司 logo 牆 — 四行無框排列。
+ * 圖片常駐輕微模糊並與白色背景混合，保留可辨識輪廓。
  */
 export default function PartnerLogos() {
   return (
     <div className="px-2 py-4 sm:px-6">
-      <div className="mx-auto grid max-w-5xl grid-cols-2 items-center justify-items-center gap-x-10 gap-y-14 sm:grid-cols-3 lg:grid-cols-5">
-        {partners.map((p) => (
-          <div key={p.name} className="flex h-12 w-full items-center justify-center px-2">
-            {p.logo ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={p.logo}
-                alt={p.name}
-                className="max-h-9 w-auto max-w-full object-contain transition-transform duration-300 hover:scale-105"
-              />
-            ) : (
-              <span className="text-center font-display text-[15px] font-semibold tracking-wide text-ink-soft/70">
-                {p.name}
-              </span>
-            )}
-          </div>
+      <div className="mx-auto max-w-5xl space-y-8 sm:space-y-10">
+        {partnerRows.map((row, rowIndex) => (
+          <section key={rowIndex} data-logo-row={rowIndex + 1}>
+            <div className="grid grid-cols-2 items-center gap-x-8 gap-y-8 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-12">
+              {row.map((company) => (
+                <div
+                  key={company.name}
+                  data-company-name={company.name}
+                  className="flex h-20 w-full items-center justify-center px-3 py-3 sm:h-24"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={company.logo}
+                    alt={company.name}
+                    className="max-h-11 w-auto max-w-full object-contain opacity-80 mix-blend-multiply blur-[2px] sm:max-h-12"
+                    style={{ transform: `scale(${company.scale ?? 1})` }}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
         ))}
       </div>
       <p className="mt-14 text-center text-sm text-ink-faint">And more…</p>

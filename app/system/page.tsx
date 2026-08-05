@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 export default function SystemPage() {
   return (
     <section
+      data-service-view="guidance"
       className="min-h-screen px-4 py-16 sm:px-6"
       style={{
         background:

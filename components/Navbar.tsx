@@ -5,10 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks } from "@/lib/content";
 
-// 關於我們 的四個分區 — 由導覽列的懸停下拉選單進入
+// 關於我們 的三個分區 — 由導覽列的懸停下拉選單進入
 const aboutSections = [
   { id: "background", label: "TEP背景" },
-  { id: "founder", label: "創始人" },
   { id: "mentors", label: "導師團隊" },
   { id: "targets", label: "目標公司" },
 ];
@@ -17,7 +16,7 @@ const aboutSections = [
 const serviceItems = [
   { href: "/services", label: "五大服務計畫" },
   { href: "/system", label: "輔導遞升系統" },
-  { href: "/services#comparison", label: "項目比對" },
+  { href: "/services/comparison", label: "項目比對" },
 ];
 
 function ChevronDown({ className = "" }: { className?: string }) {
@@ -60,7 +59,7 @@ export default function Navbar() {
           {navLinks.map((link) => {
             const active = pathname === link.href;
 
-            // 關於我們 — 懸停顯示四個分區的下拉選單
+            // 關於我們 — 懸停顯示三個分區的下拉選單
             if (link.href === "/about") {
               return (
                 <div key={link.href} className="group relative">

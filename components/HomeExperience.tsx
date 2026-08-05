@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+} from "react";
 import { motto } from "@/lib/content";
 import PartnerLogos from "@/components/PartnerLogos";
 
@@ -75,8 +81,8 @@ const SERVICE_CARDS = [
 /** Empty drag-drop image slot — mirrors the design's <image-slot> placeholder. */
 function Slot({ src, label }: { src?: string; label: string }) {
   if (src) {
-    // eslint-disable-next-line @next/next/no-img-element
     return (
+      // eslint-disable-next-line @next/next/no-img-element
       <img
         src={src}
         alt=""
@@ -123,19 +129,69 @@ export default function HomeExperience() {
   const segf2Ref = useRef<HTMLDivElement>(null);
   const segf3Ref = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
+  const stripProgressRef = useRef<HTMLDivElement>(null);
   const stripFillRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const panDir = useRef(0);
 
-  const updateStripBar = () => {
+  const updateStripBar = useCallback(() => {
     const strip = stripRef.current;
+    const progress = stripProgressRef.current;
     const bar = stripFillRef.current;
-    if (!strip || !bar) return;
+    if (!strip || !progress || !bar) return;
     const max = strip.scrollWidth - strip.clientWidth;
     const frac = strip.clientWidth / strip.scrollWidth;
     const ratio = max > 0 ? strip.scrollLeft / max : 0;
     bar.style.width = frac * 100 + "%";
     bar.style.left = ratio * (1 - frac) * 100 + "%";
+    progress.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
+  }, []);
+
+  const moveServiceStrip = useCallback((distance: number) => {
+    const strip = stripRef.current;
+    if (!strip || distance === 0) return false;
+
+    const max = Math.max(strip.scrollWidth - strip.clientWidth, 0);
+    const next = Math.max(0, Math.min(max, strip.scrollLeft + distance));
+    if (Math.abs(next - strip.scrollLeft) < 1) return false;
+
+    strip.scrollLeft = next;
+    updateStripBar();
+    return true;
+  }, [updateStripBar]);
+
+  const handleStripProgressClick = (event: ReactMouseEvent<HTMLDivElement>) => {
+    const strip = stripRef.current;
+    const track = event.currentTarget;
+    if (!strip) return;
+
+    const rect = track.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+    const max = Math.max(strip.scrollWidth - strip.clientWidth, 0);
+    strip.scrollTo({ left: ratio * max, behavior: "smooth" });
+  };
+
+  const handleStripProgressKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    const strip = stripRef.current;
+    if (!strip) return;
+
+    const step = strip.clientWidth * 0.72;
+    const distance =
+      event.key === "ArrowRight" || event.key === "PageDown"
+        ? step
+        : event.key === "ArrowLeft" || event.key === "PageUp"
+          ? -step
+          : 0;
+
+    if (distance && moveServiceStrip(distance)) event.preventDefault();
+    if (event.key === "Home") {
+      strip.scrollTo({ left: 0, behavior: "smooth" });
+      event.preventDefault();
+    }
+    if (event.key === "End") {
+      strip.scrollTo({ left: strip.scrollWidth, behavior: "smooth" });
+      event.preventDefault();
+    }
   };
 
   useEffect(() => {
@@ -155,6 +211,25 @@ export default function HomeExperience() {
 
     const segs = [seg1Ref, seg2Ref, seg3Ref];
     const segfs = [segf1Ref, segf2Ref, segf3Ref];
+    const progress = stripProgressRef.current;
+
+    const handleNativeStripWheel = (event: WheelEvent) => {
+      const strip = stripRef.current;
+      if (!strip) return;
+
+      const dominantDelta =
+        Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      const deltaScale =
+        event.deltaMode === WheelEvent.DOM_DELTA_LINE
+          ? 32
+          : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+            ? strip.clientWidth
+            : 1;
+
+      if (moveServiceStrip(dominantDelta * deltaScale)) event.preventDefault();
+    };
+
+    progress?.addEventListener("wheel", handleNativeStripWheel, { passive: false });
 
     const loop = () => {
       raf = requestAnimationFrame(loop);
@@ -267,8 +342,11 @@ export default function HomeExperience() {
       document.addEventListener("pointerdown", tryPlay, { once: true });
     }
 
-    return () => cancelAnimationFrame(raf);
-  }, []);
+    return () => {
+      cancelAnimationFrame(raf);
+      progress?.removeEventListener("wheel", handleNativeStripWheel);
+    };
+  }, [moveServiceStrip, updateStripBar]);
 
   const caption = (title: string, desc: string) => (
     <div style={{ position: "absolute", left: 48, bottom: 48, pointerEvents: "none", maxWidth: 420 }}>
@@ -552,6 +630,7 @@ export default function HomeExperience() {
 
           <div style={{ position: "relative", marginTop: 56 }}>
             <div
+              id="service-card-strip"
               ref={stripRef}
               className="tep-strip"
               onScroll={updateStripBar}
@@ -662,28 +741,57 @@ export default function HomeExperience() {
             </div>
           </div>
 
-          {/* thin scroll progress line */}
+          {/* interactive scroll progress line */}
           <div
+            ref={stripProgressRef}
+            className="tep-strip-progress"
+            data-service-strip-progress="true"
+            role="scrollbar"
+            tabIndex={0}
+            aria-label="瀏覽五個服務計畫"
+            aria-controls="service-card-strip"
+            aria-orientation="horizontal"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={0}
+            onClick={handleStripProgressClick}
+            onKeyDown={handleStripProgressKeyDown}
+            title="使用滑鼠滾輪、點擊進度線或方向鍵瀏覽"
             style={{
-              margin: "36px 48px 0",
-              height: 2,
-              borderRadius: 999,
-              background: "var(--tep-line)",
+              margin: "26px 48px 0",
+              height: 20,
               position: "relative",
+              cursor: "ew-resize",
+              outlineOffset: 4,
+              touchAction: "pan-y",
             }}
           >
             <div
-              ref={stripFillRef}
+              aria-hidden="true"
               style={{
                 position: "absolute",
                 left: 0,
-                top: 0,
+                right: 0,
+                top: 9,
                 height: 2,
-                width: "40%",
                 borderRadius: 999,
-                background: "var(--tep-navy)",
+                background: "var(--tep-line)",
               }}
-            />
+            >
+              <div
+                ref={stripFillRef}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  height: 2,
+                  width: "40%",
+                  borderRadius: 999,
+                  background: "var(--tep-navy)",
+                  transition: "left 80ms linear, width 80ms linear",
+                }}
+              />
+            </div>
           </div>
         </section>
 

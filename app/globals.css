@@ -151,6 +151,14 @@ body {
 .tep-strip::-webkit-scrollbar {
   display: none;
 }
+.tep-strip-progress:focus {
+  outline: none;
+}
+.tep-strip-progress:focus-visible {
+  border-radius: 999px;
+  outline: 2px solid var(--tep-blue);
+  outline-offset: 3px;
+}
 /* "瞭解更多" link — gold, brightens to white on hover */
 .tep-more {
   display: inline-flex;

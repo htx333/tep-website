@@ -53,7 +53,7 @@ export const tiers: Tier[] = [
     planName: "私享計畫",
     planEn: "Private",
     baseLabel: "疊加內容",
-    items: ["在職導師內推", "實習機會保障", "錄像面試準備"],
+    items: ["在職導師內推", "實習機會保障"],
   },
   {
     id: "sovereign",
@@ -71,7 +71,7 @@ export const tiers: Tier[] = [
     planName: "至尊計畫",
     planEn: "Apex",
     baseLabel: "疊加內容",
-    items: ["20年+資歷銀行家親授"],
+    items: ["閉環式1-1帶教・獨家親授"],
   },
 ];
 
@@ -87,7 +87,12 @@ export type PlanDetail = {
   intro?: string;
   rows: { title: string; body: string }[];
   referralNote?: string;
-  stats?: { value: string; label: string; note?: string }[];
+  stats?: {
+    value: string;
+    label: string;
+    note?: string;
+    highlight?: boolean;
+  }[];
   quals?: { code: string; desc: string }[];
   qualsQuote?: string;
   modules?: { no: string; title: string; body: string }[];
@@ -155,18 +160,19 @@ export const planDetails: PlanDetail[] = [
         title: "實習機會保障",
         body: "親選實習行業和實習時期，行業包括四大、資產管理、家族辦公室、券商。",
       },
-      {
-        title: "錄像面試準備",
-        body: "針對企業錄像面試要求，協助梳理回答內容、打磨表達技巧與鏡頭表現，並提供專業錄影及後期剪輯；涵蓋背調｜預期問答、自我介紹｜邏輯框架、企業文化｜行為面試。",
-      },
     ],
     referralNote:
       "導師網絡覆蓋 Goldman Sachs、BlackRock、J.P. Morgan、UBS、Citi、中金公司 CICC、Barclays、中國銀行、Morgan Stanley、大華銀行 UOB、Daiwa 等機構。",
     stats: [
       { value: "≤1%", label: "投行・頂級資產管理", note: "一般錄取率" },
-      { value: "≤5%", label: "外資商業銀行", note: "一般錄取率" },
-      { value: "15%", label: "四大會計事務所", note: "一般錄取率" },
-      { value: "100%", label: "錄取率", note: "錄像面試準備" },
+      { value: "≤3%", label: "香港零售銀行", note: "一般錄取率" },
+      { value: "≤5%", label: "四大會計事務所", note: "一般錄取率" },
+      {
+        value: "100%",
+        label: "錄取率",
+        note: "經 TEP",
+        highlight: true,
+      },
     ],
   },
   {
@@ -177,19 +183,19 @@ export const planDetails: PlanDetail[] = [
     intro: "專業資格賦能",
     rows: [],
     quals: [
-      { code: "HKSI (Paper 1/7/8/12)", desc: "銀行及財富管理前台入門資格" },
+      { code: "HKSI (LE 1/7/8/12)", desc: "銀行及財富管理前台入門資格" },
       { code: "SFC Type 1, 4, 9", desc: "資產管理與顧問業務進階認證" },
       { code: "IIQE (Paper 1-5)", desc: "理財策劃與保險領域合規要求" },
       { code: "IQE", desc: "退休金及強積金業務必備" },
     ],
-    qualsQuote: "完成資格認證，實現合規掛牌",
+    qualsQuote: "完成專業資格認證，邁向頂尖金融職涯",
   },
   {
     tierId: "apex",
     heading: "鑽石：Apex 至尊計畫",
     headingEn: "Apex",
     overlay: true,
-    intro: "20年+資歷銀行家親傳，全維度賦能",
+    intro: "閉環式 1-1 帶教，20年+資歷銀行家獨家親授",
     rows: [],
     modules: [
       {
@@ -213,9 +219,9 @@ export const planDetails: PlanDetail[] = [
         body: "建立家族聯盟，共享資源，拓展業界商業精英人脈。",
       },
     ],
-    careerArrow: ["分析師", "經理", "助理副總裁", "副總裁"],
-    arrowQuote: "能用1年時間斬獲12年投行學習成果",
-    arrowNote: "TEP透過實戰累積、高強度學習",
+    careerArrow: ["現況盤點", "交易與資產實戰", "家族治理與傳承", "承擔家族重任"],
+    arrowQuote: "用 1 年時間深造，為承擔家族重任作完善準備",
+    arrowNote: "20年+資歷銀行家閉環式 1-1 帶教・全維度賦能",
   },
 ];
 
@@ -244,7 +250,7 @@ export const comparison: {
     "在職導師內推",
     "實習機會保障",
     "專業資格賦能",
-    "20+年資行家親授",
+    "閉環式1-1帶教・獨家親授",
   ],
   plans: [
     {
@@ -313,38 +319,6 @@ export const background = {
   signedBy: "創始人寄語",
 };
 
-export const founder = {
-  name: "張兆愷",
-  nameEn: "Bruce Cheung",
-  role: "創始人",
-  tagline: "從私人銀行起點到資產管理公司創始人",
-  quote:
-    "職涯發展不是依靠運氣或際遇，而是對自身價值與市場趨勢的精準錨定與持續掌控。",
-  chapters: [
-    {
-      title: "核心起點",
-      bullets: [
-        "畢業即加入花旗銀行財富管理部，於投行黃金時代在核心業務團隊接受系統性培訓，奠定跨境資本市場與投行實務的堅實基礎。",
-        "歷經逾 30 年金融市場周期淬鍊，形成兼具宏觀洞察與前瞻視野的專業判斷力，能精準把握全球資本流動與未來趨勢。",
-      ],
-    },
-    {
-      title: "20年+頂級外資私行中堅要職",
-      bullets: [
-        "曾任職於 Citibank、匯豐瑞士私人銀行、德意志銀行及瑞士信貸等國際頂級金融機構，累積逾 30 年資產管理及家族辦公室實戰經驗。",
-        "歷任交易台主管、結構性產品專家及諮詢團隊負責人，橫跨前中後台關鍵職能，具備從投資策略到執行落地的全鏈條專業能力。",
-      ],
-    },
-    {
-      title: "金融精英與稀缺內推圈層",
-      bullets: [
-        "目前作為資產管理公司與聯合家族辦公室的創始人，直接對接大中華區超高淨值（UHNW）客戶及單一家族辦公室。",
-        "生態圈覆蓋買方、賣方、私人銀行、投資銀行、信託公司、律師行、四大，能為學員提供契合真實用人標準的實戰帶教，並提供高價值的稀缺內推通道。",
-      ],
-    },
-  ],
-};
-
 // 導師團隊（首席培訓師領銜，其餘席位陸續公布）
 export const mentors = [
   {
@@ -353,9 +327,9 @@ export const mentors = [
     photo: "/team/szzy-wong.jpg",
     bullets: [
       "20 餘年亞太金融行業資深資歷。",
-      "風控諮詢：為跨國公司構建並執行商業、信貸與合規風控框架。",
-      "資產管理：管理東南亞機構及超高淨值（U/HNW）客戶戰略資產組合。",
-      "基金架構：精通匹配跨境投資目標的私募基金及離岸載體設計。",
+      "具備豐富金融獵頭及人才顧問經驗，深諳銀行與金融機構的招聘流程及人才評估標準。",
+      "擁有廣博的 HR 及金融業界招聘網絡，熟悉各類金融職位的面試要求與核心技能組合。",
+      "深入理解銀行人才市場的供需脈絡，能精準配對人才能力與機構用人需求，提升職涯定位與招聘成功率。",
     ],
   },
   {
@@ -372,32 +346,38 @@ export const mentors = [
   },
 ];
 
-// 合作夥伴（示意展示，之後以正式名單替換）
-// 目標公司 — logo 牆。放入正式 logo 圖檔（例如 public/logos/goldman-sachs.svg）
-// 後，於對應項目補上 `logo` 路徑即可自動改以圖片顯示；未提供 logo 前以名稱示意。
-export type Partner = { name: string; logo?: string };
+// 目標公司 — 四行 logo wall，每行五間公司。
+export type Partner = { name: string; logo: string; scale?: number };
 
-export const partners: Partner[] = [
-  { name: "Goldman Sachs", logo: "/logos/goldman-sachs.png" },
-  { name: "Morgan Stanley", logo: "/logos/morgan-stanley.png" },
-  { name: "J.P. Morgan", logo: "/logos/jpmorgan.webp" },
-  { name: "UBS", logo: "/logos/ubs.png" },
-  { name: "Citi", logo: "/logos/citi.png" },
-  { name: "Barclays", logo: "/logos/barclays.webp" },
-  { name: "HSBC 滙豐", logo: "/logos/hsbc.png" },
-  { name: "BlackRock", logo: "/logos/blackrock.png" },
-  { name: "中金公司 CICC", logo: "/logos/cicc.png" },
-  { name: "中國銀行", logo: "/logos/bank-of-china.webp" },
-  { name: "中信 CITIC", logo: "/logos/citic.png" },
-  { name: "華泰證券", logo: "/logos/huatai.webp" },
-  { name: "大華銀行 UOB", logo: "/logos/uob.webp" },
-  { name: "Daiwa", logo: "/logos/daiwa.png" },
-  { name: "ARK", logo: "/logos/ark.jpeg" },
-  { name: "泰康", logo: "/logos/taikang.jpeg" },
-  { name: "Deloitte", logo: "/logos/deloitte.png" },
-  { name: "EY", logo: "/logos/ey.webp" },
-  { name: "KPMG", logo: "/logos/kpmg.webp" },
-  { name: "PwC", logo: "/logos/pwc.webp" },
+export const partnerRows: Partner[][] = [
+  [
+      { name: "Goldman Sachs", logo: "/logos/goldman-sachs.png" },
+      { name: "Morgan Stanley", logo: "/logos/morgan-stanley.png" },
+      { name: "J.P. Morgan", logo: "/logos/jpmorgan.webp" },
+      { name: "UBS", logo: "/logos/ubs.png" },
+      { name: "Citibank", logo: "/logos/citi.png" },
+  ],
+  [
+      { name: "滙豐", logo: "/logos/hsbc.png" },
+      { name: "渣打", logo: "/logos/standard-chartered.webp", scale: 1.15 },
+      { name: "中信 CITIC", logo: "/logos/citic.png" },
+      { name: "中國銀行", logo: "/logos/bank-of-china.webp" },
+      { name: "恆生", logo: "/logos/hang-seng.jpg", scale: 1.15 },
+  ],
+  [
+      { name: "富途", logo: "/logos/futu.jpeg", scale: 2.1 },
+      { name: "中金公司 CICC", logo: "/logos/cicc.png" },
+      { name: "華泰證券", logo: "/logos/huatai.webp" },
+      { name: "國泰君安", logo: "/logos/guotai-junan.png", scale: 4.1 },
+      { name: "UOB", logo: "/logos/uob.webp" },
+  ],
+  [
+      { name: "Deloitte", logo: "/logos/deloitte.png" },
+      { name: "EY", logo: "/logos/ey.webp" },
+      { name: "KPMG", logo: "/logos/kpmg.webp" },
+      { name: "PwC", logo: "/logos/pwc.webp" },
+      { name: "Fung Yu", logo: "/logos/fung-yu.png" },
+  ],
 ];
 
 // ---------- FAQ ----------
@@ -460,8 +440,13 @@ export const contact = {
   echo: "Tailored. Expert. Prestigious.",
   address: "Unit A2, 4/F., Block A, Po Yip Building, 62-70 Texaco Road, Tsuen Wan, NT",
   phone: "+852 60990937",
-  linkedin: "",
-  wechat: "blablabla", // 佔位，之後更新
-  email: "cs@tepcareers.con", // 佔位，之後更新
+  linkedin: "https://www.linkedin.com/in/tep-careers-085a70425",
+  wechat: "TEP_Careers",
+  email: "cs@tepcareers.com",
   website: "TepCarees.com", // 佔位，之後更新
+};
+
+export const socialLinks = {
+  whatsapp: "https://wa.me/qr/AOCRB3QQBPQVC1",
+  wechat: "https://u.wechat.com/ICPoniK88f6lVWOX610AqMc?s=2",
 };

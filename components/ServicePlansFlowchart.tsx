@@ -30,7 +30,7 @@ type Tier = {
 
 const FOUNDATION = ["金融行業深度分析", "職涯諮詢", "簡歷精修", "線下面試技巧打磨"];
 const PREMIER_ADD = ["優先終面機會", "系統智能內推", "錄像面試準備"];
-const PRIVATE_ADD = ["在職導師內推", "實習機會保障", "錄像面試準備"];
+const PRIVATE_ADD = ["在職導師內推", "實習機會保障"];
 
 const TIERS: Tier[] = [
   {
@@ -64,7 +64,7 @@ const TIERS: Tier[] = [
     icon: "private",
     items: PRIVATE_ADD,
     prev: [...FOUNDATION, ...PREMIER_ADD],
-    outcome: "現職導師親薦、實習機會保障，並完善錄像面試表現。",
+    outcome: "現職導師親薦與實習機會保障。",
   },
   {
     key: 4,
@@ -85,9 +85,9 @@ const TIERS: Tier[] = [
     cn: "至尊計畫",
     icon: "apex",
     gold: true,
-    items: ["20年+資歷銀行家親授"],
+    items: ["閉環式1-1帶教・獨家親授"],
     prev: [...FOUNDATION, ...PREMIER_ADD, ...PRIVATE_ADD, "專業資格賦能"],
-    outcome: "交易、家族治理、信託及家族聯盟全維度賦能。",
+    outcome: "用1年時間深造，為承擔家族重任作完善準備。",
   },
 ];
 

@@ -57,7 +57,7 @@ const DATA: Record<string, { outcomes: string[]; next: Next }> = {
     ],
     next: {
       title: "下一步：鑽石 Apex",
-      desc: "20年+資歷銀行家親傳的師徒制頂層輔導，從交易到家族治理，全維度賦能。",
+      desc: "閉環式 1-1 帶教，由20年+資歷銀行家獨家親授，從交易到家族治理，全維度賦能。",
       label: "瞭解至尊計畫",
       href: "/services/apex",
     },
@@ -65,8 +65,8 @@ const DATA: Record<string, { outcomes: string[]; next: Next }> = {
   apex: {
     outcomes: [
       "交易、家族治理、信託、家族聯盟四大模組全維度賦能",
-      "20年+ 銀行家親傳的師徒制頂層輔導",
-      "1 年完成從入行到菁英的跨越式蛻變",
+      "20年+資歷銀行家閉環式 1-1 帶教",
+      "用 1 年時間深造，為承擔家族重任作完善準備",
       "頂層政商與家族人脈的稀缺連結",
     ],
     next: {

@@ -443,7 +443,7 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/tep-careers-085a70425",
   wechat: "TEP_Careers",
   email: "cs@tepcareers.com",
-  website: "TepCarees.com", // 佔位，之後更新
+  website: "tepcareers.com",
 };
 
 export const socialLinks = {

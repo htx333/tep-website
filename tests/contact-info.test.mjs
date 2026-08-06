@@ -18,8 +18,10 @@ test("contact panel shows current phone, LinkedIn, and WeChat details", async ()
     /href="https:\/\/www\.linkedin\.com\/in\/tep-careers-085a70425"[^>]*>https:\/\/www\.linkedin\.com\/in\/tep-careers-085a70425<\/a>/,
   );
   assert.match(html, />微信<\/dt><dd[^>]*>TEP_Careers<\/dd>/);
+  assert.match(html, />網站<\/dt><dd[^>]*>tepcareers\.com<\/dd>/);
   assert.doesNotMatch(html, /流動電話/);
   assert.doesNotMatch(html, /blablabla/);
+  assert.doesNotMatch(html, /以上資訊將於正式營運前更新/);
 });
 
 test("all contact cards open the shared information form and offer direct social contact", async () => {

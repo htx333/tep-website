@@ -82,9 +82,6 @@ export default function ContactPage() {
                 </div>
               ))}
             </dl>
-            <p className="mt-10 border-t border-line pt-6 text-xs leading-relaxed text-ink-soft">
-              以上資訊將於正式營運前更新。
-            </p>
           </div>
 
           {/* 三大聯繫入口 */}

@@ -35,8 +35,13 @@ test("service overview and detail routes match the latest TEP Pitch", async () =
     "HKD500,000",
     "HKD2,000,000",
   ]) {
-    assert.match(comparison, new RegExp(price));
+    assert.doesNotMatch(
+      comparison,
+      new RegExp(price),
+      "Comparison should not display plan prices",
+    );
   }
+  assert.doesNotMatch(comparison, /各計畫定價/);
 
   assert.match(services, /金融行業深度分析/);
   assert.match(services, /錄像面試準備/);

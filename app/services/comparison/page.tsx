@@ -24,7 +24,7 @@ export default function ServicesComparisonPage() {
           <ComparisonTable />
         </div>
         <p className="mt-6 text-center text-xs text-white/50">
-          各計畫定價與細節，歡迎預約 1 對 1 諮詢了解。
+          各計畫細節，歡迎預約 1 對 1 諮詢了解。
         </p>
       </div>
     </section>

@@ -86,6 +86,8 @@ function Slot({ src, label }: { src?: string; label: string }) {
       <img
         src={src}
         alt=""
+        data-gallery-image={label}
+        className="home-gallery-image"
         style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
       />
     );
@@ -349,13 +351,13 @@ export default function HomeExperience() {
   }, [moveServiceStrip, updateStripBar]);
 
   const caption = (title: string, desc: string) => (
-    <div style={{ position: "absolute", left: 48, bottom: 48, pointerEvents: "none", maxWidth: 420 }}>
+    <div className="home-gallery-caption" style={{ position: "absolute", pointerEvents: "none" }}>
       <div style={{ width: 28, height: 1, background: "var(--tep-gold)", marginBottom: 10 }} />
       <h3
+        className="home-gallery-caption-title"
         style={{
           margin: 0,
           fontFamily: "var(--font-display)",
-          fontSize: 18,
           fontWeight: 600,
           letterSpacing: "0.06em",
           color: "#fff",
@@ -365,11 +367,9 @@ export default function HomeExperience() {
         {title}
       </h3>
       <p
+        className="home-gallery-caption-copy"
         style={{
           margin: "8px 0 0",
-          fontSize: 14,
-          lineHeight: 1.8,
-          maxWidth: 400,
           color: "rgba(255,255,255,0.9)",
           textShadow: "0 1px 12px rgba(10,31,61,0.55)",
         }}
@@ -382,7 +382,7 @@ export default function HomeExperience() {
   return (
     <div>
       {/* spacer so the fixed motto shows first */}
-      <div style={{ height: "100vh" }} />
+      <div className="home-motto-spacer" />
 
       {/* 1 · Motto hero — fixed underlay; the stage slides up over it */}
       <section
@@ -422,12 +422,11 @@ export default function HomeExperience() {
             pointerEvents: "none",
           }}
         >
-          <div style={{ maxWidth: 1152, padding: "48px 64px", textAlign: "center" }}>
+          <div className="home-motto-copy" style={{ maxWidth: 1152, textAlign: "center" }}>
             <p
+              className="home-motto-kicker"
               style={{
-                fontSize: 12,
                 fontWeight: 500,
-                letterSpacing: "0.35em",
                 color: "var(--tep-blue)",
                 margin: 0,
               }}
@@ -435,19 +434,18 @@ export default function HomeExperience() {
               香港金融行業職業規劃・求職領導品牌
             </p>
             <h1
+              className="home-motto-title"
               style={{
                 margin: "20px auto 0",
                 fontFamily: "var(--font-display)",
-                fontSize: 34,
                 fontWeight: 700,
-                lineHeight: 1.2,
                 color: "var(--tep-navy)",
-                whiteSpace: "nowrap",
               }}
             >
               於時代轉折處，重塑金融精英的職涯路徑
             </h1>
             <div
+              className="home-motto-words"
               style={{
                 marginTop: 28,
                 display: "flex",
@@ -457,7 +455,6 @@ export default function HomeExperience() {
                 columnGap: 16,
                 rowGap: 8,
                 fontFamily: "var(--font-display)",
-                fontSize: 24,
                 fontWeight: 600,
                 letterSpacing: "0.08em",
                 color: "var(--tep-ink-soft)",
@@ -471,10 +468,9 @@ export default function HomeExperience() {
               ))}
             </div>
             <p
+              className="home-motto-subtitle"
               style={{
                 marginTop: 14,
-                fontSize: 13,
-                letterSpacing: "0.25em",
                 color: "var(--tep-ink-soft)",
               }}
             >
@@ -490,7 +486,7 @@ export default function HomeExperience() {
         aria-label="主頁 · 全版圖片組"
         style={{ position: "relative", height: "560vh", background: "transparent", zIndex: 3 }}
       >
-        <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", background: "#e0eded" }}>
+        <div className="home-gallery-sticky" style={{ position: "sticky", top: 0, overflow: "hidden", background: "#e0eded" }}>
           <div
             ref={growCardRef}
             style={{

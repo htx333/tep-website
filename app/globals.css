@@ -176,6 +176,103 @@ body {
 .tep-more:hover {
   color: #fff;
 }
+
+/* Homepage desktop values are kept here so phone overrides remain isolated. */
+.home-motto-spacer,
+.home-gallery-sticky {
+  height: 100vh;
+}
+.home-motto-copy {
+  padding: 48px 64px;
+}
+.home-motto-kicker {
+  font-size: 12px;
+  letter-spacing: 0.35em;
+}
+.home-motto-title {
+  font-size: 34px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.home-motto-words {
+  font-size: 24px;
+}
+.home-motto-subtitle {
+  font-size: 13px;
+  letter-spacing: 0.25em;
+}
+.home-gallery-caption {
+  bottom: 48px;
+  left: 48px;
+  max-width: 420px;
+}
+.home-gallery-caption-title {
+  font-size: 18px;
+}
+.home-gallery-caption-copy {
+  max-width: 400px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.home-gallery-image {
+  object-position: center center;
+}
+
+@media (max-width: 639px) {
+  .home-motto-spacer,
+  .home-gallery-sticky {
+    height: 100svh;
+  }
+  .home-motto-copy {
+    width: 100%;
+    padding: 32px 20px;
+  }
+  .home-motto-kicker {
+    font-size: 11px;
+    line-height: 1.65;
+    letter-spacing: 0.16em;
+  }
+  .home-motto-title {
+    max-width: 100%;
+    font-size: clamp(23px, 7.2vw, 29px);
+    line-height: 1.4;
+    white-space: normal;
+  }
+  .home-motto-words {
+    column-gap: 10px !important;
+    font-size: clamp(18px, 5.5vw, 22px);
+  }
+  .home-motto-subtitle {
+    font-size: 12px;
+    line-height: 1.6;
+    letter-spacing: 0.12em;
+  }
+  .home-gallery-caption {
+    right: 20px;
+    bottom: max(22px, env(safe-area-inset-bottom));
+    left: 20px;
+    max-width: none;
+  }
+  .home-gallery-caption-title {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .home-gallery-caption-copy {
+    max-width: none;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .home-gallery-image[data-gallery-image^="Talent"] {
+    object-position: 46% center;
+  }
+  .home-gallery-image[data-gallery-image^="Elite"] {
+    object-position: 50% center;
+  }
+  .home-gallery-image[data-gallery-image^="Professional"] {
+    object-position: 58% center;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .tep-word {
     animation: none;

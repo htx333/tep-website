@@ -7,14 +7,22 @@ import { partnerRows } from "@/lib/content";
 export default function PartnerLogos() {
   return (
     <div className="px-2 py-4 sm:px-6">
-      <div className="mx-auto max-w-5xl space-y-8 sm:space-y-10">
+      <div
+        data-logo-wall-responsive="true"
+        className="mx-auto grid max-w-5xl grid-cols-2 items-center gap-x-6 gap-y-6 sm:block sm:space-y-10"
+      >
         {partnerRows.map((row, rowIndex) => (
-          <section key={rowIndex} data-logo-row={rowIndex + 1}>
-            <div className="grid grid-cols-2 items-center gap-x-8 gap-y-8 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-12">
+          <section
+            key={rowIndex}
+            data-logo-row={rowIndex + 1}
+            className="contents sm:block"
+          >
+            <div className="contents sm:grid sm:grid-cols-3 sm:items-center sm:gap-x-8 sm:gap-y-8 lg:grid-cols-5 lg:gap-x-12">
               {row.map((company) => (
                 <div
                   key={company.name}
                   data-company-name={company.name}
+                  data-mobile-company-name={company.name}
                   className="flex h-20 w-full items-center justify-center px-3 py-3 sm:h-24"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}

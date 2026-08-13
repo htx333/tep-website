@@ -4,6 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks } from "@/lib/content";
+import LanguageSwitcher, {
+  useChineseLanguage,
+} from "@/components/LanguageSwitcher";
 
 // 關於我們 的三個分區 — 由導覽列的懸停下拉選單進入
 const aboutSections = [
@@ -41,6 +44,7 @@ function ChevronDown({ className = "" }: { className?: string }) {
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { language, setLanguage } = useChineseLanguage();
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur">
@@ -147,32 +151,47 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Link
-            href="/contact"
-            className="ml-3 rounded-md bg-navy px-4 py-2 text-sm text-white transition-colors hover:bg-blue"
-          >
-            預約諮詢
-          </Link>
+          <div className="ml-3 flex items-center gap-2">
+            <Link
+              href="/contact"
+              className="rounded-md bg-navy px-4 py-2 text-sm text-white transition-colors hover:bg-blue"
+            >
+              預約諮詢
+            </Link>
+            <LanguageSwitcher
+              placement="desktop"
+              language={language}
+              onChange={setLanguage}
+            />
+          </div>
         </nav>
 
-        {/* 手機選單按鈕 */}
-        <button
-          aria-label="開啟選單"
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
-          onClick={() => setOpen(!open)}
-        >
-          <span
-            className={`h-0.5 w-6 bg-navy transition-transform ${
-              open ? "translate-y-2 rotate-45" : ""
-            }`}
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher
+            placement="mobile"
+            language={language}
+            onChange={setLanguage}
           />
-          <span className={`h-0.5 w-6 bg-navy ${open ? "opacity-0" : ""}`} />
-          <span
-            className={`h-0.5 w-6 bg-navy transition-transform ${
-              open ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          />
-        </button>
+
+          {/* 手機選單按鈕 */}
+          <button
+            aria-label="開啟選單"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+            onClick={() => setOpen(!open)}
+          >
+            <span
+              className={`h-0.5 w-6 bg-navy transition-transform ${
+                open ? "translate-y-2 rotate-45" : ""
+              }`}
+            />
+            <span className={`h-0.5 w-6 bg-navy ${open ? "opacity-0" : ""}`} />
+            <span
+              className={`h-0.5 w-6 bg-navy transition-transform ${
+                open ? "-translate-y-2 -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
       </div>
 
       {/* 手機下拉選單 */}

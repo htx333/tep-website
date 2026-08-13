@@ -16,7 +16,10 @@ export default function SystemPage() {
           "linear-gradient(180deg, #dde7f2 0%, #e7eef5 45%, #ffffff 100%)",
       }}
     >
-      <div className="mx-auto max-w-[1280px]">
+      <div
+        data-guidance-responsive-frame="true"
+        className="mx-auto max-w-[1980px]"
+      >
         <ServicePlansFlowchart />
         <p className="mt-4 text-center text-xs text-ink-faint">
           將游標移至各進階計畫的「計畫內容」標題，即可展開該級已含的前級服務。

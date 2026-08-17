@@ -21,3 +21,18 @@ test("mentor team displays Szey Wong", async () => {
   assert.doesNotMatch(html, /管理東南亞機構及超高淨值/);
   assert.doesNotMatch(html, /私募基金及離岸載體設計/);
 });
+
+test("mentor team displays Leanna Chan as the second mentor", async () => {
+  const response = await fetch(mentorsUrl);
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Leanna Chan/);
+  assert.match(html, /首席面試官/);
+  assert.match(html, /美國南加州大學金融學士/);
+  assert.match(html, /特許金融分析師（CFA）持證人/);
+  assert.match(html, /瑞士盈豐銀行、德意志銀行、瑞信私人銀行、瑞信寶盛銀行/);
+  assert.match(html, /20年以上私人銀行業務及資產管理經驗/);
+  assert.match(html, /高增值客戶提供資產管理服務/);
+  assert.match(html, /\/team\/leanna\.jpeg/);
+});

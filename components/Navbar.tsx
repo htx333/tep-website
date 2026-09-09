@@ -63,6 +63,9 @@ export default function Navbar() {
           {navLinks.map((link) => {
             const active = pathname === link.href;
 
+            // 桌面版將報名提升為右側主行動按鈕，避免與一般選單重複。
+            if (link.href === "/registration") return null;
+
             // 關於我們 — 懸停顯示三個分區的下拉選單
             if (link.href === "/about") {
               return (
@@ -153,10 +156,10 @@ export default function Navbar() {
           })}
           <div className="ml-3 flex items-center gap-2">
             <Link
-              href="/contact"
+              href="/registration"
               className="rounded-md bg-navy px-4 py-2 text-sm text-white transition-colors hover:bg-blue"
             >
-              預約諮詢
+              報名
             </Link>
             <LanguageSwitcher
               placement="desktop"

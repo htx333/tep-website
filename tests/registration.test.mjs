@@ -8,11 +8,8 @@ test("registration page is available from the primary navigation", async () => {
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  const registrationIndex = html.indexOf('href="/registration">報名');
-  const contactIndex = html.indexOf('href="/contact">聯繫我們');
 
-  assert.ok(registrationIndex >= 0, "Registration should be a primary navigation item");
-  assert.ok(contactIndex > registrationIndex, "Registration should appear before contact");
+  assert.match(html, /href="\/registration">報名<\/a>/);
   assert.match(html, /data-registration-form="true"/);
   assert.match(html, /name="nameEn"/);
   assert.match(html, /name="university"/);

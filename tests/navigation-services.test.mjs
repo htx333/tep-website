@@ -54,3 +54,18 @@ test("tablet widths keep the complete mobile navigation", async () => {
     "Mobile menu should remain available below the large breakpoint",
   );
 });
+
+test("desktop navigation promotes registration and removes the consultation button", async () => {
+  const response = await fetch(servicesUrl);
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(
+    html,
+    /<a class="rounded-md bg-navy px-4 py-2 text-sm text-white transition-colors hover:bg-blue" href="\/registration">報名<\/a>/,
+  );
+  assert.doesNotMatch(
+    html,
+    /<a class="rounded-md bg-navy px-4 py-2 text-sm text-white transition-colors hover:bg-blue" href="\/contact">預約諮詢<\/a>/,
+  );
+});

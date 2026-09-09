@@ -320,7 +320,7 @@ export const background = {
   signedBy: "創始人寄語",
 };
 
-// 導師團隊（首席培訓師領銜，其餘席位陸續公布）
+// 導師團隊
 export const mentors = [
   {
     name: "Szey Wong",
@@ -345,10 +345,15 @@ export const mentors = [
     ],
   },
   {
-    name: "即將公布",
-    role: "「賽道」導師",
-    bullets: ["更多香港行內頂尖在職導師陸續加入，敬請期待。"],
-    upcoming: true,
+    name: "Richard Lim",
+    role: "首席職涯導師",
+    photo: "/team/richard-lim.jpeg",
+    bullets: [
+      "擁有逾 15 年金融市場及投資銀行經驗，現任 Sun Hung Kai & Co. 交易副總裁；曾任瑞信（Credit Suisse）及瑞銀（UBS）等頂級私人銀行。",
+      "特許金融分析師（CFA）及金融風險管理師（FRM），另以優異成績取得英國埃克塞特大學金融分析及基金管理碩士學位。",
+      "管理逾 2 億美元的全球長短倉股票投資組合，具備基本面及量化分析、風險管理與交易策略制定的實戰經驗。",
+      "擁有豐富的職涯指導經驗，深入理解金融市場、資產管理及投資產品的核心能力要求，能為有志投身交易、投資銀行及資產管理的學生提供具針對性的職涯指導。",
+    ],
   },
 ];
 

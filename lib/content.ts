@@ -12,6 +12,7 @@ export const navLinks = [
   { href: "/services", label: "服務" },
   { href: "/stories", label: "學生分享" },
   { href: "/faq", label: "FAQ" },
+  { href: "/registration", label: "報名" },
   { href: "/contact", label: "聯繫我們" },
 ];
 

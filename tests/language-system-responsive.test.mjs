@@ -16,11 +16,14 @@ test("guidance chart can grow to its authored width on large monitors", async ()
   assert.match(html, /max-w-\[1980px\]/);
 });
 
-test("navbar exposes Traditional and Simplified Chinese controls", async () => {
+test("navbar exposes Traditional, Simplified, and English language controls", async () => {
   const html = await fetchHtml("/");
 
   assert.match(html, /data-language-switcher="desktop"/);
   assert.match(html, /data-language-switcher="mobile"/);
   assert.match(html, /aria-label="使用繁體中文"/);
   assert.match(html, /aria-label="使用簡體中文"/);
+  assert.match(html, /aria-label="Use English"/);
+  assert.match(html, />Eng<\/button>/);
+  assert.match(html, /translate="no"/);
 });

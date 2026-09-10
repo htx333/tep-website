@@ -62,10 +62,31 @@ test("desktop navigation promotes registration and removes the consultation butt
   const html = await response.text();
   assert.match(
     html,
-    /<a class="rounded-md bg-navy px-4 py-2 text-sm text-white transition-colors hover:bg-blue" href="\/registration">報名<\/a>/,
+    /<a href="https:\/\/docs\.google\.com\/forms\/d\/e\/1FAIpQLSc9TlBeBVz_qVUOfyyHDbzPweqX64jtzuwXJ2GKsNuMHm945A\/viewform" class="rounded-md bg-navy px-4 py-2 text-sm text-white transition-colors hover:bg-blue">報名<\/a>/,
   );
   assert.doesNotMatch(
     html,
     /<a class="rounded-md bg-navy px-4 py-2 text-sm text-white transition-colors hover:bg-blue" href="\/contact">預約諮詢<\/a>/,
   );
+});
+
+test("registration links send Chinese visitors to the Chinese form and English visitors to the English form", async () => {
+  const navbarSource = await readFile(
+    new URL("../components/Navbar.tsx", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    navbarSource,
+    /const registrationFormHref =\s*language === "english"\s*\? ENGLISH_REGISTRATION_FORM_URL\s*:\s*CHINESE_REGISTRATION_FORM_URL/,
+  );
+  assert.match(
+    navbarSource,
+    /1FAIpQLSc9TlBeBVz_qVUOfyyHDbzPweqX64jtzuwXJ2GKsNuMHm945A\/viewform/,
+  );
+  assert.match(
+    navbarSource,
+    /1FAIpQLSc6AKGscsqWL6pjJvhY0PKgtuXtF-OKmeLpFlUB3kZjQPFm1Q\/viewform/,
+  );
+  assert.match(navbarSource, /href=\{registrationFormHref\}/);
 });

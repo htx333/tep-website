@@ -22,6 +22,11 @@ const serviceItems = [
   { href: "/services/comparison", label: "項目比對" },
 ];
 
+const CHINESE_REGISTRATION_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSc9TlBeBVz_qVUOfyyHDbzPweqX64jtzuwXJ2GKsNuMHm945A/viewform";
+const ENGLISH_REGISTRATION_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSc6AKGscsqWL6pjJvhY0PKgtuXtF-OKmeLpFlUB3kZjQPFm1Q/viewform";
+
 function ChevronDown({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -45,6 +50,11 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const { language, setLanguage } = useChineseLanguage();
+  const registrationFormHref =
+    language === "english"
+      ? ENGLISH_REGISTRATION_FORM_URL
+      : CHINESE_REGISTRATION_FORM_URL;
+  const registrationLabel = language === "english" ? "Register" : "報名";
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur">
@@ -155,12 +165,12 @@ export default function Navbar() {
             );
           })}
           <div className="ml-3 flex items-center gap-2">
-            <Link
-              href="/registration"
+            <a
+              href={registrationFormHref}
               className="rounded-md bg-navy px-4 py-2 text-sm text-white transition-colors hover:bg-blue"
             >
-              報名
-            </Link>
+              {registrationLabel}
+            </a>
             <LanguageSwitcher
               placement="desktop"
               language={language}
@@ -255,6 +265,15 @@ export default function Navbar() {
                   ))}
                 </div>
               </div>
+            ) : link.href === "/registration" ? (
+              <a
+                key={link.href}
+                href={registrationFormHref}
+                onClick={() => setOpen(false)}
+                className="block border-b border-line px-2 py-3 text-sm text-ink-soft"
+              >
+                {registrationLabel}
+              </a>
             ) : (
               <Link
                 key={link.href}

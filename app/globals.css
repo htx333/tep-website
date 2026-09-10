@@ -84,6 +84,22 @@ body {
   font-family: var(--font-display), Georgia, serif;
 }
 
+/* English mode uses Google Translate for the full public-facing copy.
+   Keep its utility frame out of the branded interface while retaining the
+   translation control in the navigation language switcher. */
+iframe.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame.skiptranslate,
+.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate,
+#google_translate_element,
+.goog-logo-link,
+.goog-te-gadget {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
 /* Staged fade-in for the hero motto */
 @keyframes motto-rise {
   from {

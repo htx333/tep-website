@@ -3,13 +3,12 @@ import test from "node:test";
 
 const baseUrl = process.env.REGISTRATION_BASE_URL ?? "http://localhost:3000";
 
-test("registration page is available from the primary navigation", async () => {
+test("registration page remains available directly", async () => {
   const response = await fetch(`${baseUrl}/registration`);
   assert.equal(response.status, 200);
 
   const html = await response.text();
 
-  assert.match(html, /href="\/registration">報名<\/a>/);
   assert.match(html, /data-registration-form="true"/);
   assert.match(html, /name="nameEn"/);
   assert.match(html, /name="university"/);

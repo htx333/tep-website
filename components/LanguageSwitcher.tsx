@@ -254,7 +254,7 @@ export default function LanguageSwitcher({
               : "text-ink-soft hover:bg-mist hover:text-navy"
           }`}
         >
-          {language === "english" ? "Trad" : "繁"}
+          繁
         </button>
         <button
           type="button"
@@ -267,7 +267,7 @@ export default function LanguageSwitcher({
               : "text-ink-soft hover:bg-mist hover:text-navy"
           }`}
         >
-          {language === "english" ? "Simp" : "簡"}
+          簡
         </button>
         <button
           type="button"

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const baseUrl = process.env.HOME_BASE_URL ?? "http://localhost:3000";
@@ -26,4 +27,15 @@ test("navbar exposes Traditional, Simplified, and English language controls", as
   assert.match(html, /aria-label="Use English"/);
   assert.match(html, />Eng<\/button>/);
   assert.match(html, /translate="no"/);
+});
+
+test("language selector keeps the 繁 and 簡 labels in English mode", async () => {
+  const source = await readFile(
+    new URL("../components/LanguageSwitcher.tsx", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(source, />\s*繁\s*<\/button>/);
+  assert.match(source, />\s*簡\s*<\/button>/);
+  assert.doesNotMatch(source, /"Trad"|"Simp"/);
 });
